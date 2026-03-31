@@ -1,6 +1,15 @@
 const STORAGE_KEY = "skater-punk-prototype-state";
 const GARAGE_LIMIT = 6;
 
+function esc(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 const ARCHETYPES = {
   Courier: {
     crewBias: ["Night Voltage", "Slipstream Union", "Parcel Saints"],
@@ -341,11 +350,11 @@ function renderStats(stats) {
     item.className = "stat-item";
     item.innerHTML = `
       <div class="status-row">
-        <span class="stat-label">${label}</span>
-        <strong class="stat-value">${value}</strong>
+        <span class="stat-label">${esc(label)}</span>
+        <strong class="stat-value">${esc(value)}</strong>
       </div>
       <div class="stat-bar">
-        <div class="stat-fill" style="width: ${value * 10}%"></div>
+        <div class="stat-fill" style="width: ${esc(value * 10)}%"></div>
       </div>
     `;
     ui.statList.appendChild(item);
@@ -389,22 +398,22 @@ function renderGarage() {
     wrapper.innerHTML = `
       <div class="garage-header">
         <div>
-          <span class="garage-tag">${card.rarity} ${card.archetype}</span>
-          <h3>${card.name}</h3>
-          <p class="garage-meta">${card.crew} · ${card.vibe}</p>
+          <span class="garage-tag">${esc(card.rarity)} ${esc(card.archetype)}</span>
+          <h3>${esc(card.name)}</h3>
+          <p class="garage-meta">${esc(card.crew)} · ${esc(card.vibe)}</p>
         </div>
-        <button class="ghost-button small" data-action="load" data-id="${card.id}" type="button">Load</button>
+        <button class="ghost-button small" data-action="load" data-id="${esc(card.id)}" type="button">Load</button>
       </div>
       <div class="mini-stats">
-        <span>SPD ${card.stats.speed}</span>
-        <span>CTRL ${card.stats.control}</span>
-        <span>PWR ${card.stats.power}</span>
-        <span>CRG ${card.stats.cargo}</span>
-        <span>TECH ${card.stats.tech}</span>
-        <span>STYLE ${card.stats.style}</span>
+        <span>SPD ${esc(card.stats.speed)}</span>
+        <span>CTRL ${esc(card.stats.control)}</span>
+        <span>PWR ${esc(card.stats.power)}</span>
+        <span>CRG ${esc(card.stats.cargo)}</span>
+        <span>TECH ${esc(card.stats.tech)}</span>
+        <span>STYLE ${esc(card.stats.style)}</span>
       </div>
       <div class="garage-actions">
-        <button class="secondary-button small-action" data-action="remove" data-id="${card.id}" type="button">Remove</button>
+        <button class="secondary-button small-action" data-action="remove" data-id="${esc(card.id)}" type="button">Remove</button>
       </div>
     `;
     ui.garageList.appendChild(wrapper);
@@ -425,8 +434,8 @@ function renderMissionLog() {
     const element = document.createElement("article");
     element.className = `log-entry ${entry.tone}`;
     element.innerHTML = `
-      <strong>${entry.title}</strong>
-      <p>${entry.text}</p>
+      <strong>${esc(entry.title)}</strong>
+      <p>${esc(entry.text)}</p>
     `;
     ui.missionLog.appendChild(element);
   });
@@ -438,8 +447,8 @@ function renderMetrics(metrics) {
     const element = document.createElement("div");
     element.className = "metric-card";
     element.innerHTML = `
-      <span class="stat-label">${metric.label}</span>
-      <strong>${metric.value}</strong>
+      <span class="stat-label">${esc(metric.label)}</span>
+      <strong>${esc(metric.value)}</strong>
     `;
     ui.routeMetrics.appendChild(element);
   });
