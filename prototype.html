@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- Standalone browser prototype (no build step required) -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skater-Punk | Card Forge Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Skater-Punk prototype</p>
+          <h1>Build a squad. Launch a route. Watch the city react.</h1>
+          <p class="hero-copy">
+            This browser prototype lets you generate collectible electric
+            skateboarders, save a six-rider squad, and test live delivery
+            routes with crew-based outcomes.
+          </p>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-chip">
+            <span class="label">Garage size</span>
+            <strong id="garage-count">0 / 6</strong>
+          </div>
+          <div class="stat-chip">
+            <span class="label">Completed routes</span>
+            <strong id="completed-routes">0</strong>
+          </div>
+          <div class="stat-chip">
+            <span class="label">Route credits</span>
+            <strong id="earned-credits">0</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard">
+        <section class="panel forge-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Card Forge</p>
+              <h2>Generate a skater card</h2>
+            </div>
+            <button class="ghost-button" id="copy-json-button" type="button">
+              Copy JSON
+            </button>
+          </div>
+
+          <form id="forge-form" class="forge-form">
+            <label>
+              <span>Archetype</span>
+              <select id="archetype-input" name="archetype">
+                <option value="Courier">Courier</option>
+                <option value="Trick Rider">Trick Rider</option>
+                <option value="Battery Hacker">Battery Hacker</option>
+                <option value="Route Scout">Route Scout</option>
+                <option value="Heavy Hauler">Heavy Hauler</option>
+                <option value="Street Mechanic">Street Mechanic</option>
+                <option value="Signal Ghost">Signal Ghost</option>
+                <option value="Crew Captain">Crew Captain</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Rarity</span>
+              <select id="rarity-input" name="rarity">
+                <option value="Common">Common</option>
+                <option value="Uncommon">Uncommon</option>
+                <option value="Rare" selected>Rare</option>
+                <option value="Epic">Epic</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Style vibe</span>
+              <select id="vibe-input" name="vibe">
+                <option value="Neon Outlaw">Neon Outlaw</option>
+                <option value="Chrome Courier">Chrome Courier</option>
+                <option value="Back Alley Mystic">Back Alley Mystic</option>
+                <option value="Signal Pirate">Signal Pirate</option>
+                <option value="Storm Runner">Storm Runner</option>
+                <option value="Garage Royalty">Garage Royalty</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Accent color</span>
+              <input id="accent-input" name="accent" type="color" value="#00f0ff" />
+            </label>
+
+            <div class="button-row">
+              <button class="primary-button" type="submit">Generate card</button>
+              <button class="secondary-button" id="reroll-name" type="button">
+                Reroll name
+              </button>
+              <button class="secondary-button" id="reroll-stats" type="button">
+                Reroll stats
+              </button>
+              <button class="secondary-button" id="reroll-visuals" type="button">
+                Reroll visuals
+              </button>
+            </div>
+          </form>
+
+          <article class="card-preview" id="card-preview">
+            <div class="card-topbar">
+              <div>
+                <p class="card-rarity" id="card-rarity">Rare</p>
+                <h3 id="card-name">Vex Halo</h3>
+              </div>
+              <span class="card-crew" id="card-crew">Night Voltage</span>
+            </div>
+
+            <div class="card-art" id="card-art">
+              <div class="city-lights"></div>
+              <div class="skater-silhouette">
+                <div class="skater-head"></div>
+                <div class="skater-body"></div>
+                <div class="board"></div>
+              </div>
+              <div class="art-copy">
+                <p id="visual-summary">Lean silhouette, reflective jacket, narrow deck.</p>
+                <strong id="card-district">District: Ion Loop</strong>
+              </div>
+            </div>
+
+            <div class="card-grid">
+              <div class="stat-list" id="stat-list"></div>
+              <div class="ability-stack">
+                <div>
+                  <p class="section-label">Passive</p>
+                  <strong id="card-passive">Shortcuts</strong>
+                </div>
+                <div>
+                  <p class="section-label">Ability</p>
+                  <strong id="card-ability">Surge Lane</strong>
+                </div>
+                <div>
+                  <p class="section-label">Flavor</p>
+                  <p id="card-flavor">
+                    If traffic is legal, Vex is not interested.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <span id="card-archetype">Courier</span>
+              <span id="card-energy">Battery: Voltglass</span>
+              <span id="card-id">card_000001</span>
+            </div>
+          </article>
+
+          <div class="button-row compact">
+            <button class="primary-button" id="save-card" type="button">
+              Save to garage
+            </button>
+            <button class="ghost-button" id="clear-garage" type="button">
+              Clear garage
+            </button>
+          </div>
+        </section>
+
+        <section class="panel garage-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Garage</p>
+              <h2>Your active crew</h2>
+            </div>
+            <p class="panel-copy">Store up to six riders for route testing.</p>
+          </div>
+
+          <div class="garage-list" id="garage-list"></div>
+        </section>
+
+        <section class="panel route-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Route console</p>
+              <h2>Test drive the game loop</h2>
+            </div>
+            <p class="panel-copy">
+              Launch a route using your saved garage and watch deliveries resolve
+              in real time.
+            </p>
+          </div>
+
+          <div class="route-controls">
+            <label>
+              <span>District</span>
+              <select id="route-input">
+                <option value="ion-loop">Ion Loop</option>
+                <option value="ghost-market">Ghost Market</option>
+                <option value="redline-heights">Redline Heights</option>
+                <option value="ember-docks">Ember Docks</option>
+              </select>
+            </label>
+
+            <button class="primary-button" id="launch-route" type="button">
+              Launch route
+            </button>
+          </div>
+
+          <div class="route-status">
+            <div class="status-row">
+              <span>Route progress</span>
+              <strong id="route-progress-label">Idle</strong>
+            </div>
+            <div class="progress-track">
+              <div id="route-progress-bar"></div>
+            </div>
+            <div class="route-metrics" id="route-metrics"></div>
+          </div>
+
+          <div class="log-panel">
+            <div class="status-row">
+              <span>Mission log</span>
+              <button class="ghost-button small" id="clear-log" type="button">
+                Clear log
+              </button>
+            </div>
+            <div class="mission-log" id="mission-log"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
