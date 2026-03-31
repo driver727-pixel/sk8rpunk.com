@@ -1,0 +1,37 @@
+{
+  "name": "skater-punk",
+  "version": "1.0.0",
+  "description": "Grand Vision  Web/Android based. I am building an 80s/90s cyberpunk delivery game. I have characters on electric skateboards. Where the user builds up to a squad of 6 skateboarders who go on automated routes chosen by the user. The routes run in real time in the background. The game is map, flash card, and garage based.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/driver727-pixel/Skater-Punk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/driver727-pixel/Skater-Punk/issues"
+  },
+  "homepage": "https://github.com/driver727-pixel/Skater-Punk#readme",
+  "dependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react-swc": "^4.3.0",
+    "jsdom": "^29.0.1",
+    "typescript": "^6.0.2",
+    "vite": "^8.0.3",
+    "vitest": "^4.1.2"
+  }
+}
