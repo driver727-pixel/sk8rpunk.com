@@ -1,4 +1,6 @@
 const STORAGE_KEY = "skater-punk-card-forge-saves";
+const DECK_STORAGE_KEY = "skater-punk-card-forge-active-deck";
+const DECK_SIZE = 6;
 const DEFAULT_SEED = "night-shift";
 const DEFAULTS = {
   archetype: "Courier",
@@ -149,6 +151,7 @@ const state = {
   },
   currentCard: null,
   collection: loadCollection(),
+  deck: loadDeck(),
 };
 
 function xmur3(str) {
@@ -464,8 +467,24 @@ function loadCollection() {
   }
 }
 
+function loadDeck() {
+  try {
+    const deck = JSON.parse(localStorage.getItem(DECK_STORAGE_KEY) || "[]");
+    if (!Array.isArray(deck)) {
+      return [];
+    }
+    return deck.slice(0, DECK_SIZE);
+  } catch {
+    return [];
+  }
+}
+
 function persistCollection() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state.collection));
+}
+
+function persistDeck() {
+  localStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(state.deck));
 }
 
 function setStatus(message) {
@@ -494,6 +513,140 @@ function setStatus(message) {
   `;
 }
 
+function buildDeckSummary(deck) {
+  const totals = STAT_KEYS.reduce((output, key) => {
+    output[key] = 0;
+    return output;
+  }, {});
+
+  const archetypes = new Map();
+  const crews = new Map();
+
+  for (const card of deck) {
+    for (const key of STAT_KEYS) {
+      totals[key] += card.stats[key];
+    }
+    archetypes.set(card.archetype, (archetypes.get(card.archetype) || 0) + 1);
+    crews.set(card.crew, (crews.get(card.crew) || 0) + 1);
+  }
+
+  const count = deck.length || 1;
+  const averages = STAT_KEYS.reduce((output, key) => {
+    output[key] = Number((totals[key] / count).toFixed(1));
+    return output;
+  }, {});
+
+  const topArchetypes = [...archetypes.entries()]
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 3)
+    .map(([name, value]) => `${name} x${value}`);
+  const topCrews = [...crews.entries()]
+    .sort((left, right) => right[1] - left[1])
+    .slice(0, 2)
+    .map(([name, value]) => `${name} x${value}`);
+
+  return {
+    size: deck.length,
+    totals,
+    averages,
+    topArchetypes,
+    topCrews,
+    batteryLoad: deck.reduce((sum, card) => sum + card.stats.power + card.stats.tech, 0),
+    routeReadiness: deck.reduce((sum, card) => sum + card.stats.speed + card.stats.control + card.stats.cargo, 0),
+  };
+}
+
+function createDeckSummaryMarkup(summary) {
+  if (!summary.size) {
+    return `
+      <div class="detail-card">
+        <h3>Squad summary</h3>
+        <p class="empty-state">Your active squad is empty. Add up to six skaters from the current card or saved collection.</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="detail-card">
+      <h3>Squad summary</h3>
+      <div class="deck-summary-grid">
+        <div>
+          <span class="summary-label">Slots used</span>
+          <strong>${summary.size} / ${DECK_SIZE}</strong>
+        </div>
+        <div>
+          <span class="summary-label">Route readiness</span>
+          <strong>${summary.routeReadiness}</strong>
+        </div>
+        <div>
+          <span class="summary-label">Battery load</span>
+          <strong>${summary.batteryLoad}</strong>
+        </div>
+      </div>
+      <div class="detail-card nested-card">
+        <h3>Average stats</h3>
+        <div class="stat-list">
+          ${STAT_KEYS.map((key) => {
+            const value = summary.averages[key];
+            const fill = Math.round((value / 10) * 100);
+            return `
+              <div class="stat-row">
+                <span>${statLabel(key)}</span>
+                <div class="stat-bar"><div class="stat-bar-fill" style="width:${fill}%"></div></div>
+                <strong>${value}</strong>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      </div>
+      <div class="deck-pill-list">
+        <span class="deck-pill">${escapeHtml(summary.topArchetypes.join(" | ") || "No archetypes yet")}</span>
+        <span class="deck-pill">${escapeHtml(summary.topCrews.join(" | ") || "No crews yet")}</span>
+      </div>
+    </div>
+  `;
+}
+
+function createDeckSlotMarkup(card, index) {
+  if (!card) {
+    return `
+      <article class="deck-slot empty-slot">
+        <div class="deck-slot-header">
+          <span>Slot ${index + 1}</span>
+          <span class="slot-status">Open</span>
+        </div>
+        <p class="empty-state">Add a generated or saved skater here.</p>
+      </article>
+    `;
+  }
+
+  return `
+    <article class="deck-slot">
+      <div class="deck-slot-header">
+        <span>Slot ${index + 1}</span>
+        <span class="slot-status">${escapeHtml(card.rarity)}</span>
+      </div>
+      <div class="deck-mini-card">${createCardSvg(card, `deck-${index}`)}</div>
+      <strong>${escapeHtml(card.name)}</strong>
+      <div class="collection-meta">${escapeHtml(card.archetype)} // ${escapeHtml(card.crew)}</div>
+      <div class="button-grid">
+        <button type="button" class="secondary-button deck-load-button" data-index="${index}">Load</button>
+        <button type="button" class="text-button deck-remove-button" data-index="${index}">Remove</button>
+      </div>
+    </article>
+  `;
+}
+
+function createDeckExport() {
+  const summary = buildDeckSummary(state.deck);
+  return {
+    squadSize: summary.size,
+    generatedAt: new Date().toISOString(),
+    summary,
+    cards: state.deck,
+  };
+}
+
 function renderCollection() {
   const list = document.querySelector("#collection-list");
   const count = document.querySelector("#collection-count");
@@ -505,6 +658,19 @@ function renderCollection() {
   }
 
   list.innerHTML = state.collection.map((card, index) => createCollectionItem(card, index)).join("");
+}
+
+function renderDeck() {
+  const slots = document.querySelector("#deck-slots");
+  const summaryNode = document.querySelector("#deck-summary");
+  const jsonNode = document.querySelector("#deck-json");
+  const countNode = document.querySelector("#deck-count");
+  const summary = buildDeckSummary(state.deck);
+
+  countNode.textContent = `${state.deck.length} / ${DECK_SIZE} slots filled`;
+  slots.innerHTML = Array.from({ length: DECK_SIZE }, (_, index) => createDeckSlotMarkup(state.deck[index], index)).join("");
+  summaryNode.innerHTML = createDeckSummaryMarkup(summary);
+  jsonNode.textContent = JSON.stringify(createDeckExport(), null, 2);
 }
 
 function renderCard(message = "Generated a new card.") {
@@ -616,6 +782,31 @@ function saveCurrentCard() {
   setStatus(`Saved ${state.currentCard.name} to the local collection.`);
 }
 
+function addCurrentCardToDeck() {
+  if (!state.currentCard) {
+    return;
+  }
+
+  const existingIndex = state.deck.findIndex((card) => card.id === state.currentCard.id);
+  if (existingIndex !== -1) {
+    state.deck[existingIndex] = state.currentCard;
+    persistDeck();
+    renderDeck();
+    setStatus(`Updated ${state.currentCard.name} in active squad slot ${existingIndex + 1}.`);
+    return;
+  }
+
+  if (state.deck.length >= DECK_SIZE) {
+    setStatus(`Active squad is full. Remove a skater before adding ${state.currentCard.name}.`);
+    return;
+  }
+
+  state.deck = [...state.deck, state.currentCard];
+  persistDeck();
+  renderDeck();
+  setStatus(`Added ${state.currentCard.name} to active squad slot ${state.deck.length}.`);
+}
+
 function loadSavedCard(index) {
   const card = state.collection[index];
   if (!card) {
@@ -635,11 +826,57 @@ function loadSavedCard(index) {
   renderCard(`Loaded saved card ${card.name}.`);
 }
 
+function loadDeckCard(index) {
+  const card = state.deck[index];
+  if (!card) {
+    return;
+  }
+
+  state.currentCard = card;
+  state.form = {
+    archetype: card.archetype,
+    rarity: card.rarity,
+    vibe: card.vibe,
+    personality: card.personality[0],
+    accent: card.accent,
+    seed: card.seed,
+  };
+  state.channels = { ...card.channels };
+  syncFormFields();
+  renderCard(`Loaded squad card ${card.name}.`);
+}
+
 function deleteSavedCard(index) {
   state.collection.splice(index, 1);
   persistCollection();
   renderCollection();
   setStatus("Deleted saved card.");
+}
+
+function removeDeckCard(index) {
+  const [removed] = state.deck.splice(index, 1);
+  persistDeck();
+  renderDeck();
+  setStatus(removed ? `Removed ${removed.name} from active squad.` : "Removed squad card.");
+}
+
+function clearDeck() {
+  state.deck = [];
+  persistDeck();
+  renderDeck();
+  setStatus("Cleared the active squad.");
+}
+
+function exportDeckJson() {
+  const exportData = JSON.stringify(createDeckExport(), null, 2);
+  const blob = new Blob([exportData], { type: "application/json;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "skater-punk-active-squad.json";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  setStatus("Exported active squad JSON.");
 }
 
 function initializeForm() {
@@ -653,6 +890,7 @@ function initializeForm() {
 function attachEvents() {
   const form = document.querySelector("#forge-form");
   const collectionList = document.querySelector("#collection-list");
+  const deckSlots = document.querySelector("#deck-slots");
 
   form.addEventListener("input", (event) => {
     const target = event.target;
@@ -684,7 +922,10 @@ function attachEvents() {
   document.querySelector("#reroll-visuals-button").addEventListener("click", () => reroll("visuals"));
   document.querySelector("#reroll-stats-button").addEventListener("click", () => reroll("stats"));
   document.querySelector("#save-button").addEventListener("click", saveCurrentCard);
+  document.querySelector("#add-to-deck-button").addEventListener("click", addCurrentCardToDeck);
   document.querySelector("#export-button").addEventListener("click", exportPng);
+  document.querySelector("#export-deck-button").addEventListener("click", exportDeckJson);
+  document.querySelector("#clear-deck-button").addEventListener("click", clearDeck);
 
   document.querySelector("#clear-collection-button").addEventListener("click", () => {
     state.collection = [];
@@ -710,12 +951,32 @@ function attachEvents() {
       deleteSavedCard(Number(deleteButton.dataset.index));
     }
   });
+
+  deckSlots.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    const loadButton = target.closest(".deck-load-button");
+    const removeButton = target.closest(".deck-remove-button");
+
+    if (loadButton instanceof HTMLButtonElement) {
+      loadDeckCard(Number(loadButton.dataset.index));
+      return;
+    }
+
+    if (removeButton instanceof HTMLButtonElement) {
+      removeDeckCard(Number(removeButton.dataset.index));
+    }
+  });
 }
 
 function init() {
   initializeForm();
   syncChannelsFromBaseSeed();
   renderCollection();
+  renderDeck();
   attachEvents();
   renderCard("Ready to forge your first Electric Skateboarder.");
 }

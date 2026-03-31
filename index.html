@@ -159,6 +159,13 @@
               <button id="save-button" class="primary-button" type="button">
                 Save to collection
               </button>
+              <button
+                id="add-to-deck-button"
+                class="secondary-button"
+                type="button"
+              >
+                Add to active deck
+              </button>
               <button id="export-button" class="secondary-button" type="button">
                 Export PNG
               </button>
@@ -198,6 +205,50 @@
           </section>
         </section>
       </main>
+
+      <section class="panel deck-panel">
+        <div class="deck-header">
+          <div class="panel-header">
+            <h2>Active squad deck</h2>
+            <p>
+              Build a six-skater squad from the current card or your saved
+              collection.
+            </p>
+          </div>
+          <div class="deck-tools">
+            <span id="deck-count" class="deck-count"></span>
+            <label class="field deck-name-field">
+              <span>Deck name</span>
+              <input
+                id="deck-name-input"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Night Shift Six"
+              />
+            </label>
+            <div class="button-grid deck-button-grid">
+              <button
+                id="export-deck-button"
+                class="primary-button"
+                type="button"
+              >
+                Export deck JSON
+              </button>
+              <button
+                id="clear-deck-button"
+                class="text-button"
+                type="button"
+              >
+                Clear deck
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="deck-summary" class="deck-summary"></div>
+        <div id="deck-slots" class="deck-slots"></div>
+        <pre id="deck-json" class="deck-json"></pre>
+      </section>
 
       <section class="panel collection-panel">
         <div class="collection-header">
