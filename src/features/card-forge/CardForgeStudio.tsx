@@ -10,6 +10,7 @@ import {
   loadForgeState,
   saveForgeState,
 } from "./storage";
+import { HelpModal } from "../../components/HelpModal";
 import type { CardDeck, CharacterCard, CharacterCardInput, RerollTarget } from "./types";
 
 const createSuggestedDeckName = (decks: CardDeck[]) => `Courier Deck ${decks.length + 1}`;
@@ -35,6 +36,7 @@ export function CardForgeStudio() {
   const [newDeckName, setNewDeckName] = useState(() =>
     createSuggestedDeckName(loadForgeState().decks),
   );
+  const [isHelpOpen, setIsHelpOpen] = useState(false);
 
   useEffect(() => {
     saveForgeState(forgeState);
@@ -258,6 +260,11 @@ export function CardForgeStudio() {
                   {item}
                 </span>
               ))}
+            </div>
+            <div className="hero-help-row">
+              <button className="secondary help-button" onClick={() => setIsHelpOpen(true)}>
+                ? Help &amp; FAQ
+              </button>
             </div>
           </div>
 
@@ -493,6 +500,8 @@ export function CardForgeStudio() {
           </p>
         </div>
       </footer>
+
+      {isHelpOpen && <HelpModal onClose={() => setIsHelpOpen(false)} />}
     </div>
   );
 }
