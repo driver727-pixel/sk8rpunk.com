@@ -295,6 +295,7 @@ const ui = {
   routeProgressLabel: document.querySelector("#route-progress-label"),
   routeProgressBar: document.querySelector("#route-progress-bar"),
   routeMetrics: document.querySelector("#route-metrics"),
+  routeSummary: document.querySelector("#route-summary"),
   missionLog: document.querySelector("#mission-log"),
   clearLogButton: document.querySelector("#clear-log"),
 };
@@ -307,6 +308,7 @@ const state = {
   earnedCredits: 0,
   missionLog: [],
   routeRun: null,
+  routeSummary: null,
   routePrep: {
     selectedIds: [],
     roles: {},
@@ -331,6 +333,51 @@ function createCardId() {
 
 function buildName() {
   return `${randomItem(FIRST_NAMES)} ${randomItem(LAST_NAMES)}`;
+}
+
+function xpForLevel(level) {
+  return 80 + Math.max(0, level - 1) * 45;
+}
+
+function ensureProgression(card) {
+  const level = card.level ?? 1;
+  const xp = card.xp ?? 0;
+  const fatigue = clamp(card.fatigue ?? 0, 0, 100);
+  const condition = clamp(card.condition ?? 100, 0, 100);
+
+  return {
+    ...card,
+    level,
+    xp,
+    fatigue,
+    condition,
+  };
+}
+
+function conditionLabel(condition) {
+  if (condition >= 85) {
+    return "Prime";
+  }
+  if (condition >= 65) {
+    return "Steady";
+  }
+  if (condition >= 40) {
+    return "Shaken";
+  }
+  return "Battered";
+}
+
+function fatigueLabel(fatigue) {
+  if (fatigue <= 20) {
+    return "Fresh";
+  }
+  if (fatigue <= 45) {
+    return "Warm";
+  }
+  if (fatigue <= 70) {
+    return "Spent";
+  }
+  return "Burned";
 }
 
 function buildStats(archetype, rarity) {
