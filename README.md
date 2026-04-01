@@ -1,4 +1,7 @@
 # Skater-Punk
+
+[![Deploy test drive](https://github.com/driver727-pixel/Skater-Punk/actions/workflows/test-drive-pages.yml/badge.svg)](https://github.com/driver727-pixel/Skater-Punk/actions/workflows/test-drive-pages.yml)
+
 Grand Vision  Web/Android based. I am building an 80s/90s cyberpunk delivery game. I have characters on electric skateboards. Where the user builds up to a squad of 6 skateboarders who go on automated routes chosen by the user. The routes run in real time in the background. The game is map, flash card, and garage based.
 
 ## Test drive the prototype
@@ -16,6 +19,11 @@ If you do not want to run a local server, use the GitHub Actions workflow instea
 3. Run the **Deploy test drive** workflow, or push changes to `main` / `cursor/game-initial-files-ea73`.
 4. In repository settings, make sure **Pages** is set to **GitHub Actions** as the source.
 5. Open the deployed GitHub Pages URL for the repository.
+
+Quick links:
+
+- [Open the hosted test drive](https://driver727-pixel.github.io/Skater-Punk/)
+- [Open workflow runs](https://github.com/driver727-pixel/Skater-Punk/actions/workflows/test-drive-pages.yml)
 
 For this repository, the Pages URL will be:
 
