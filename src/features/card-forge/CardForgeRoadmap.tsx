@@ -1,6 +1,16 @@
+import type { ReactNode } from "react";
+import type { CardForgeProps } from "./types";
 import { FORGE_FILE_PLAN, FORGE_LIST_SECTIONS, FORGE_ROADMAP } from "./blueprint";
 
-export function CardForgeRoadmap() {
+interface CardForgeRoadmapProps extends CardForgeProps {
+  forgeApp?: ReactNode;
+}
+
+export function CardForgeRoadmap({ forgeApp }: CardForgeRoadmapProps) {
+  if (forgeApp) {
+    return <>{forgeApp}</>;
+  }
+
   return (
     <>
       <div className="section-heading">

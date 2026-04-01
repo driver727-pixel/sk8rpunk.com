@@ -1,4 +1,4 @@
-import type { GameState, RouteDefinition, Skater, SquadSummary } from "./types";
+import type { CharacterCard, GameState, RouteDefinition, Skater, SquadSummary } from "./types";
 
 export const TICK_MS = 30_000;
 
@@ -219,3 +219,10 @@ export const getSquadSummary = (state: GameState): SquadSummary => ({
   activeRoutes: state.skaters.filter((skater) => !!skater.routeId).length,
   rewardedRecharges: state.monetization.rewardedRechargeCount,
 });
+
+export const addCreatedCard = (source: GameState, card: CharacterCard): GameState => {
+  const state = structuredClone(source);
+  state.createdCards = [...state.createdCards, card];
+  addNotification(state, `Character card created: ${card.handle} (${card.rarity}).`);
+  return state;
+};

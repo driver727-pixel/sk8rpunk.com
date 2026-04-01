@@ -1,5 +1,28 @@
 export type Screen = "map" | "cards" | "garage" | "forge";
 
+export type CardRarity = "common" | "uncommon" | "rare" | "legendary";
+
+export interface CardStats {
+  speed: number;
+  control: number;
+  cargo: number;
+  tech: number;
+}
+
+export interface CharacterCard {
+  id: string;
+  handle: string;
+  specialty: string;
+  boardName: string;
+  rarity: CardRarity;
+  accent: string;
+  stats: CardStats;
+  passive: string;
+  ability: string;
+  seed: string;
+  createdAt: string;
+}
+
 export type RewardType = "instant-recharge" | "emergency-repair";
 
 export interface RouteDefinition {
@@ -75,6 +98,7 @@ export interface GameState {
   garageUpgrades: GarageUpgrade[];
   districtCards: DistrictCard[];
   notifications: string[];
+  createdCards: CharacterCard[];
 }
 
 export interface SquadSummary {

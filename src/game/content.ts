@@ -262,5 +262,6 @@ export const createInitialState = (): GameState => {
       "Neon dispatch online. Assign up to 6 skateboarders to autonomous delivery loops.",
       "Rewarded recharge currently uses a web mock and is ready to swap to Google AdMob on Android.",
     ],
+    createdCards: [],
   };
 };

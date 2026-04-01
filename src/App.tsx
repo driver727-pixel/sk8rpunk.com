@@ -4,6 +4,7 @@ import { createAdService } from "./game/ads";
 import { DISTRICT_CARDS, GARAGE_UPGRADES, ROUTES } from "./game/content";
 import {
   TICK_MS,
+  addCreatedCard,
   advanceState,
   assignRoute,
   clearRoute,
@@ -13,7 +14,7 @@ import {
   repairSkater,
 } from "./game/simulation";
 import { loadState, saveState } from "./game/storage";
-import type { GameState, RouteDefinition, Screen, Skater } from "./game/types";
+import type { CharacterCard, GameState, RouteDefinition, Screen, Skater } from "./game/types";
 import "./styles.css";
 
 const formatProgress = (skater: Skater, route?: RouteDefinition) => {
@@ -218,6 +219,13 @@ function App() {
     }
     updateState(clearRoute(state, selectedSkater.id));
   }, [selectedSkater, state, updateState]);
+
+  const handleCardCreated = useCallback(
+    (card: CharacterCard) => {
+      updateState(addCreatedCard(state, card));
+    },
+    [state, updateState],
+  );
 
   const handleReward = useCallback(
     async (skaterId: string, rewardType: "instant-recharge" | "emergency-repair") => {
@@ -440,7 +448,7 @@ function App() {
             </>
           )}
 
-          {screen === "forge" && <CardForgeRoadmap />}
+          {screen === "forge" && <CardForgeRoadmap onCardCreated={handleCardCreated} />}
         </section>
       </main>
 
