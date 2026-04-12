@@ -248,11 +248,12 @@ export function CardForgeStudio() {
       <header className="panel hero-panel">
         <div className="hero-grid">
           <div className="hero-copy">
-            <p className="eyebrow">Skater-Punk Card Forge</p>
+            <p className="eyebrow">Punchskater — a Skater-Punk app</p>
             <h1>Generate cyberpunk courier cards, save them, and assemble playable deck JSON.</h1>
             <p>
-              This app is built around open tooling: prompt-driven TypeScript generation, procedural 2D SVG card
-              art, local deck persistence, and exportable data contracts ready for a future game project.
+              Punchskater is the card creation tool for the Skater-Punk platform. Built on open tooling:
+              prompt-driven TypeScript generation, procedural 2D SVG card art, local deck persistence,
+              and exportable data contracts ready for a future game project.
             </p>
             <div className="chip-row">
               {OPEN_SOURCE_STACK.map((item) => (

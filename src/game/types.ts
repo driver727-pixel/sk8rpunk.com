@@ -1,4 +1,4 @@
-export type Screen = "map" | "cards" | "garage" | "forge";
+export type Screen = "hub" | "map" | "cards" | "garage" | "forge";
 
 export type CardRarity = "common" | "uncommon" | "rare" | "legendary";
 

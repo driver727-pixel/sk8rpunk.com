@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { AppHub } from "./features/app-hub/AppHub";
 import { CardForgeStudio } from "./features/card-forge/CardForgeStudio";
 import { createAdService } from "./game/ads";
 import { DISTRICT_CARDS, GARAGE_UPGRADES, ROUTES } from "./game/content";
@@ -153,7 +154,7 @@ function RiderCard({
 
 function App() {
   const adService = useRef(createAdService()).current;
-  const [screen, setScreen] = useState<Screen>("map");
+  const [screen, setScreen] = useState<Screen>("hub");
   const [state, setState] = useState<GameState>(() => {
     const initial = loadState();
     return advanceState(initial);
@@ -238,17 +239,21 @@ function App() {
   );
 
   const isForgeScreen = screen === "forge";
+  const isHubScreen = screen === "hub";
 
   return (
     <div className="app-shell">
       <header className="panel hero">
         <div>
-          <p className="eyebrow">Skater-Punk Dispatch</p>
-          <h1>Neon courier routes that keep earning while the player is away.</h1>
+          <p className="eyebrow">Skater-Punk — an SP Digital LLC property</p>
+          <h1>Cyberpunk skateboard games and tools, all in one hub.</h1>
           <p>
-            This prototype establishes the core loop for a cyberpunk delivery manager: a garage of
-            skateboard couriers, user-selected automated routes, offline progression, and rewarded ad boosts
-            designed for Google AdMob on Android.
+            Skater-Punk is a creative IP universe of neon-lit courier districts, electric
+            skateboarders, and collectible card systems. Start with{" "}
+            <button className="inline-link" onClick={() => setScreen("forge")}>
+              Punchskater
+            </button>
+            , the card creation tool, or explore the dispatch simulation from the tabs above.
           </p>
         </div>
         <div className="hero-stats">
@@ -272,15 +277,15 @@ function App() {
       </header>
 
       <nav className="tabs" aria-label="Game screens">
-        {(["map", "cards", "garage", "forge"] as Screen[]).map((tab) => (
+        {(["hub", "map", "cards", "garage", "forge"] as Screen[]).map((tab) => (
           <button key={tab} className={`tab ${screen === tab ? "active" : ""}`} onClick={() => setScreen(tab)}>
             {tab}
           </button>
         ))}
       </nav>
 
-      <main className={`layout ${isForgeScreen ? "layout-wide" : ""}`}>
-        {!isForgeScreen && (
+      <main className={`layout ${isForgeScreen || isHubScreen ? "layout-wide" : ""}`}>
+        {!isForgeScreen && !isHubScreen && (
           <section className="column">
             <div className="section-heading">
               <h2>Squad</h2>
@@ -302,6 +307,10 @@ function App() {
           </section>
         )}
         <section className="column">
+          {screen === "hub" && (
+            <AppHub onLaunchApp={(appScreen) => setScreen(appScreen as Screen)} />
+          )}
+
           {screen === "map" && (
             <>
               <div className="section-heading">

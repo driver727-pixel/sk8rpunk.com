@@ -1,8 +1,18 @@
-# Skater-Punk Card Forge
+# Skater-Punk Platform
 
-This repo now contains a working MVP for a **cyberpunk electric-skateboard courier card deck builder**.
+Skater-Punk is a creative IP universe — an **SP Digital LLC** property — for cyberpunk skateboard games and tools.
 
-The app lets a player:
+Each hosted app within the Skater-Punk universe shares the same neon-lit courier world, card system, and data contracts. The hub also links to other SP Digital LLC products that live outside the Skater-Punk IP.
+
+## Hosted Apps
+
+### Skater-Punk Universe
+
+#### Punchskater — [punchskater.com](https://punchskater.com)
+
+The first app inside the Skater-Punk IP. Punchskater is a **card creation tool** for building cyberpunk electric-skateboard courier decks.
+
+A player can:
 
 - choose a few high-level character prompts
 - generate a unique 2D courier playing card
@@ -10,7 +20,17 @@ The app lets a player:
 - assemble cards into named decks
 - export individual cards or full decks as JSON for a future game project
 
-## What the app uses
+#### Courier Dispatch
+
+The core gameplay loop: a garage of skateboard couriers, user-selected automated routes, offline progression, and rewarded ad boosts designed for Google AdMob on Android.
+
+### More from SP Digital LLC
+
+#### Craftlingua — [craftlingua.app](https://craftlingua.app)
+
+An SP Digital LLC app for hands-on language learning. Craftlingua lives outside the Skater-Punk universe but shares the same creative studio.
+
+## What the platform uses
 
 This build is intentionally based on **open-source tooling** and **open remix-friendly generation methods**:
 
@@ -24,7 +44,11 @@ No closed-source art pack is required for the MVP. The generated card art is ass
 
 ## Core feature set
 
-### Card Forge
+### App Hub
+
+The default landing screen shows every game and app available on the platform. Users can launch any live app from the hub.
+
+### Punchskater Card Forge
 
 Users can generate a courier card from:
 
