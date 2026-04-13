@@ -79,6 +79,56 @@ Users can:
 - remove cards from decks
 - export a full deck payload as JSON
 
+## Deck Builder integration
+
+Cards and decks created in the **Skater-Punk Deck Builder** (hosted at [punchskater.com](https://punchskater.com) — source: [driver727-pixel/Skater-Punk-Deck-Builder](https://github.com/driver727-pixel/Skater-Punk-Deck-Builder)) can be imported directly into this game for use in initial setup and future gameplay.
+
+### How the data flows
+
+```
+punchskater.com (Deck Builder)
+        │
+        │  1. User exports cards / deck as JSON
+        │     — or —
+        │  2. User shares a card via URL  (?card=<encoded>)
+        ▼
+Skater-Punk game
+  src/features/deck-import/
+        │
+        ├── types.ts    — TypeScript types for Deck Builder payloads (v1.0.0)
+        ├── adapter.ts  — converts Deck Builder format → internal CharacterCard format
+        └── index.ts    — parseDeckBuilderFile(), readDeckBuilderUrlParam()
+```
+
+### Import paths
+
+**File import** (recommended for full decks):
+1. Export a collection or deck from punchskater.com as `.json`
+2. Drop / upload the file in the game's Card Forge screen
+3. Imported cards land in the forge collection, ready to be assigned to gameplay decks
+
+**URL deep-link** (for single-card sharing):
+The Deck Builder encodes a shareable card as `?card=<URLEncodedJSON>` in the URL.  
+When the game is opened with that parameter, `readDeckBuilderUrlParam()` decodes it and returns a `CharacterCardInput` + `seed` pair that can be passed straight to `createCharacterCard()` to regenerate the identical card deterministically.
+
+### Archetype mapping
+
+| Deck Builder | Game |
+|---|---|
+| Runner | Courier |
+| Ghost | Signal Ghost |
+| Bruiser | Trick Rider |
+| Tech | Battery Hacker |
+| Medic | Street Mechanic |
+
+### Environment variable
+
+Copy `.env.example` to `.env` and adjust if needed:
+
+```
+VITE_DECK_BUILDER_URL=https://punchskater.com
+```
+
 ## Future game integration
 
 Exports are designed so a separate game project can ingest them without depending on this frontend.
