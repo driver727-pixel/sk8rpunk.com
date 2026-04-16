@@ -38,7 +38,12 @@ function App() {
           <p className="eyebrow">Sk8rpunk.com</p>
           <h1>Sk8rpunk Coming Soon!</h1>
           <p className="placeholder-prompt">Click below for</p>
-          <a className="app-tile-link-button placeholder-link" href={punchskaterUrl}>
+          <a
+            className="app-tile-link-button placeholder-link"
+            href={punchskaterUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             punchskater.com
           </a>
           <p className="placeholder-lore">
