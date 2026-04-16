@@ -76,31 +76,173 @@ input::placeholder {
   padding: 1.5rem 1rem 3rem;
 }
 
-.placeholder-shell {
+.placeholder-experience {
+  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.placeholder-slideshow,
+.placeholder-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.placeholder-slideshow {
+  background: #04060d;
+}
+
+.placeholder-slide {
+  position: absolute;
+  inset: -8%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transform: scale(1.08) translate3d(0, 0, 0);
+  animation:
+    placeholder-fade 32s infinite,
+    placeholder-pan 32s ease-in-out infinite;
+}
+
+.placeholder-backdrop {
+  background:
+    radial-gradient(circle at top, rgba(25, 242, 255, 0.16), transparent 34%),
+    radial-gradient(circle at 80% 15%, rgba(166, 60, 255, 0.22), transparent 26%),
+    linear-gradient(180deg, rgba(4, 6, 13, 0.24), rgba(4, 6, 13, 0.82));
 }
 
 .placeholder-card {
+  position: relative;
+  z-index: 1;
   width: min(100%, 720px);
-  padding: clamp(1.5rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 4vw, 3rem);
   display: grid;
-  gap: 1.5rem;
+  gap: 1.4rem;
+  justify-items: center;
+  text-align: center;
+  background: rgba(10, 12, 23, 0.66);
+  border-color: rgba(25, 242, 255, 0.24);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.placeholder-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+.placeholder-copy {
+  justify-items: center;
+  width: 100%;
+}
+
+.skateboard-button {
+  position: relative;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: min(100%, 340px);
+  min-height: 96px;
+  padding: 1.2rem 2rem;
+  text-decoration: none;
+  color: #07101e;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #ffe082 0%, #19f2ff 42%, #a63cff 100%);
+  clip-path: polygon(8% 50%, 14% 18%, 35% 6%, 65% 6%, 86% 18%, 92% 50%, 86% 82%, 65% 94%, 35% 94%, 14% 82%);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.2),
+    0 16px 40px rgba(25, 242, 255, 0.32);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    filter 150ms ease;
+}
+
+.skateboard-button::before,
+.skateboard-button::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0d1323;
+  border: 3px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.28);
+}
+
+.skateboard-button::before {
+  left: 22%;
+}
+
+.skateboard-button::after {
+  right: 22%;
+}
+
+.skateboard-button:hover {
+  transform: translateY(-3px) scale(1.01);
+  filter: brightness(1.03);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.24),
+    0 22px 52px rgba(25, 242, 255, 0.4);
+}
+
+.placeholder-card h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 6vw, 4.75rem);
+  line-height: 0.95;
+}
+
+.placeholder-prompt,
+.placeholder-lore {
+  margin: 0;
+}
+
+.placeholder-prompt {
+  color: #d7dcf4;
+  font-size: 1.02rem;
 }
 
 .placeholder-link {
   text-decoration: none;
   background: linear-gradient(135deg, #19f2ff, #a63cff);
   color: #090611;
+  min-width: min(100%, 260px);
+}
+
+.placeholder-lore {
+  max-width: 34rem;
+  color: #adb4d3;
+}
+
+@keyframes placeholder-fade {
+  0%,
+  18% {
+    opacity: 1;
+  }
+
+  23%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes placeholder-pan {
+  0% {
+    transform: scale(1.08) translate3d(-2%, -1.5%, 0);
+  }
+
+  50% {
+    transform: scale(1.16) translate3d(2%, 1.5%, 0);
+  }
+
+  100% {
+    transform: scale(1.1) translate3d(-1%, 2%, 0);
+  }
 }
 
 .panel {
@@ -593,6 +735,15 @@ input::placeholder {
   .character-card-footer,
   .deck-create-row {
     flex-direction: column;
+  }
+
+  .placeholder-card {
+    padding-inline: 1.25rem;
+  }
+
+  .skateboard-button {
+    min-height: 84px;
+    font-size: 0.9rem;
   }
 }
 

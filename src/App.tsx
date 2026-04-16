@@ -1,23 +1,50 @@
 const punchskaterUrl = import.meta.env.VITE_DECK_BUILDER_URL || "https://punchskater.com";
 
+const slideshowImages = [
+  "https://github.com/user-attachments/assets/8210c5b0-3690-48de-9e43-59e879d7a5df",
+  "https://github.com/user-attachments/assets/1295eb80-65f3-4db9-812e-6b6704919b0f",
+  "https://github.com/user-attachments/assets/74a660b5-5b53-4c01-9ebb-d28c3b21667a",
+  "https://github.com/user-attachments/assets/5f88e377-d084-48e6-9766-2aa4be7e53df",
+];
+
 function App() {
   return (
-    <main className="app-shell placeholder-shell">
-      <section className="panel placeholder-card">
-        <div className="stack">
-          <p className="eyebrow">Sk8rpunk.com</p>
-          <h1>Skater-Punk is parked here for now.</h1>
-          <p className="muted">
-            This site is currently a simple placeholder while the broader Skater-Punk hub is on
-            hold. For the live experience right now, head to Punchskater.
-          </p>
-        </div>
+    <main className="placeholder-experience">
+      <div className="placeholder-slideshow" aria-hidden="true">
+        {slideshowImages.map((imageUrl, index) => (
+          <div
+            key={imageUrl}
+            className="placeholder-slide"
+            style={{
+              backgroundImage: `url(${imageUrl})`,
+              animationDelay: `-${index * 8}s, -${index * 8}s`,
+            }}
+          />
+        ))}
+      </div>
+      <div className="placeholder-backdrop" aria-hidden="true" />
 
-        <div className="placeholder-actions">
+      <section className="panel placeholder-card">
+        <a
+          className="skateboard-button"
+          href={punchskaterUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ride to Punchskater
+        </a>
+
+        <div className="stack placeholder-copy">
+          <p className="eyebrow">Sk8rpunk.com</p>
+          <h1>Sk8rpunk Coming Soon!</h1>
+          <p className="placeholder-prompt">Click below for</p>
           <a className="app-tile-link-button placeholder-link" href={punchskaterUrl}>
-            Open Punchskater
+            punchskater.com
           </a>
-          <span className="badge outline-badge">Placeholder site</span>
+          <p className="placeholder-lore">
+            Punch Skater, a Sk8r Punk game created by Scotty M. Perkins, with lore
+            written by C. William Perkins.
+          </p>
         </div>
       </section>
     </main>
