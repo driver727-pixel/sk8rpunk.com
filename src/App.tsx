@@ -38,8 +38,8 @@ function App() {
 
         <div className="stack placeholder-copy">
           <p className="eyebrow">Sk8rpunk.com</p>
-          <h1>Sk8rpunk Coming Soon!</h1>
-          <p className="placeholder-prompt">Click below for</p>
+          <h1>Welcome to the world of Sk8r Punk.</h1>
+          <p className="placeholder-prompt">Click below to enter the Deck Builder</p>
           <a
             className="app-tile-link-button placeholder-link"
             href={punchskaterUrl}
