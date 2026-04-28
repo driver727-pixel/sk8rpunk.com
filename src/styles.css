@@ -219,6 +219,13 @@ input::placeholder {
   color: #adb4d3;
 }
 
+.placeholder-logo {
+  width: min(100%, 280px);
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 0 32px rgba(25, 242, 255, 0.28);
+}
+
 @keyframes placeholder-fade {
   0%,
   18% {

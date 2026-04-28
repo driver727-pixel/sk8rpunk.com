@@ -38,8 +38,13 @@ function App() {
 
         <div className="stack placeholder-copy">
           <p className="eyebrow">Sk8rpunk.com</p>
-          <h1>Sk8rpunk Coming Soon!</h1>
-          <p className="placeholder-prompt">Click below for</p>
+          <h1>Welcome to the world of Sk8r Punk.</h1>
+          <p className="placeholder-prompt">Click below to enter the Deck Builder</p>
+          <img
+            className="placeholder-logo"
+            src="https://github.com/user-attachments/assets/9525a68e-752d-4568-b62f-b5d7bd37d5eb"
+            alt="Sk8rPunk.com — a Cyberpunk Esk8r world by Scotty M. Perkins"
+          />
           <a
             className="app-tile-link-button placeholder-link"
             href={punchskaterUrl}
