@@ -1054,3 +1054,163 @@ input::placeholder {
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
+
+/* ── Universe Hub ─────────────────────────────────── */
+
+.hub-shell {
+  min-height: 100vh;
+}
+
+/* Hero */
+
+.hub-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hub-hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  max-width: 680px;
+}
+
+.hub-hero-h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.05;
+  background: linear-gradient(135deg, #fff 0%, #19f2ff 55%, #a63cff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hub-tagline {
+  margin: 0;
+  max-width: 520px;
+  color: #c8cee8;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.hub-cta-sub {
+  margin: 0;
+  color: #7a83ad;
+  font-size: 0.85rem;
+}
+
+/* Hub body */
+
+.hub-body {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 4vw, 2.5rem);
+  display: grid;
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.hub-section {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.hub-section-h2 {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.1;
+}
+
+.hub-section-copy {
+  margin: 0;
+  max-width: 640px;
+  color: #c0c7e0;
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
+.hub-north-star {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid #19f2ff;
+  border-radius: 0 16px 16px 0;
+  background: rgba(25, 242, 255, 0.05);
+  color: #d4daf5;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Factions */
+
+.hub-factions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.hub-faction-chip {
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  background: rgba(25, 242, 255, 0.05);
+  border: 1px solid rgba(25, 242, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hub-faction-chip strong {
+  color: #19f2ff;
+  font-size: 0.92rem;
+}
+
+.hub-faction-chip span {
+  color: #7a83ad;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* Featured game tile (Punch Skater) */
+
+.hub-tile-featured {
+  background: rgba(25, 242, 255, 0.04);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(25, 242, 255, 0.16);
+}
+
+/* Footer */
+
+.hub-footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hub-footer p {
+  margin: 0;
+  color: #6b7299;
+  font-size: 0.88rem;
+}
+
+.hub-footer .hub-footer-sub {
+  color: #474f72;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .hub-factions-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
