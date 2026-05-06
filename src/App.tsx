@@ -30,6 +30,7 @@ const games = [
     status: "live" as const,
     href: punchskaterUrl,
     accent: "#19f2ff",
+    cta: "Play Punch Skater ↗",
   },
   {
     id: "courier",
@@ -220,7 +221,7 @@ function App() {
                       rel="noopener noreferrer"
                       style={{ backgroundColor: game.accent, color: "#0a0e17" }}
                     >
-                      Play Punch Skater ↗
+                      {game.cta ?? `Visit ${game.name} ↗`}
                     </a>
                   ) : (
                     <button disabled style={{ opacity: 0.45, cursor: "not-allowed" }}>
