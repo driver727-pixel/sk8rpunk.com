@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 const punchskaterUrl = import.meta.env.VITE_DECK_BUILDER_URL || "https://punchskater.com";
 
 const slideshowImages = [
@@ -95,8 +97,45 @@ const games = [
 ];
 
 function App() {
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [muted, setMuted] = useState(false);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.volume = 0.35;
+    audio.play().catch(() => {
+      // Autoplay blocked — reflect true state in UI
+      audio.muted = true;
+      setMuted(true);
+    });
+  }, []);
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const nextMuted = !muted;
+    setMuted(nextMuted);
+    audio.muted = nextMuted;
+    if (!nextMuted) {
+      audio.play().catch(() => {
+        audio.muted = true;
+        setMuted(true);
+      });
+    }
+  };
+
   return (
     <div className="hub-shell">
+      <audio ref={audioRef} src="/bg-music.mp3" loop preload="auto" />
+      <button
+        className="mute-btn"
+        onClick={toggleMute}
+        aria-label={muted ? "Unmute background music" : "Mute background music"}
+        title={muted ? "Unmute" : "Mute"}
+      >
+        {muted ? "🔇" : "🔊"}
+      </button>
       {/* ── Hero ──────────────────────────────────── */}
       <section className="hub-hero">
         <div className="placeholder-slideshow" aria-hidden="true">
