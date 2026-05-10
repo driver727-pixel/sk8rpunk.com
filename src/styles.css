@@ -1061,6 +1061,32 @@ input::placeholder {
   min-height: 100vh;
 }
 
+.mute-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: rgba(10, 14, 23, 0.72);
+  border: 1px solid rgba(25, 242, 255, 0.35);
+  color: #f4f6ff;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease;
+}
+
+.mute-btn:hover {
+  background: rgba(25, 242, 255, 0.12);
+  border-color: rgba(25, 242, 255, 0.7);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(25, 242, 255, 0.18);
+}
+
 /* Hero */
 
 .hub-hero {
