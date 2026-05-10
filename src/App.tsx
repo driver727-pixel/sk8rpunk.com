@@ -159,7 +159,7 @@ function App() {
             Own the neon streets.
           </h1>
           <p className="hub-tagline">
-            Electric skateboard cyberpunk from Australia. Crews, couriers,
+            Electric skateboard cyberpunk. Crews, couriers,
             hackers, racers, and corporate rebels fight for reputation across
             the neon streets.
           </p>
@@ -281,7 +281,7 @@ function App() {
             Perkins. Lore by C. William Perkins.
           </p>
           <p className="hub-footer-sub">
-            Electric skateboard cyberpunk from Australia.
+            Electric skateboard cyberpunk.
           </p>
         </footer>
       </main>
