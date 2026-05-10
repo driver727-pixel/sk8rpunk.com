@@ -276,9 +276,9 @@ function App() {
         {/* ── Footer ────────────────────────────────── */}
         <footer className="hub-footer">
           <p>
-            Sk8r Punk is an IP by{" "}
-            <strong>SP Digital LLC</strong>. Punch Skater created by Scotty M.
-            Perkins. Lore by C. William Perkins.
+            SK8R PUNK and Punch Skater are an original IP created by Scotty M.
+            Perkins with lore by C. William Perkins. Copyright © SP Digital LLC
+            2026
           </p>
           <p className="hub-footer-sub">
             Electric skateboard cyberpunk.
