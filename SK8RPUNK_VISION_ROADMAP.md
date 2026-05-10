@@ -164,7 +164,7 @@ Responsibilities:
    - Codex / World Bible
 3. Add a simple timeline or roadmap section.
 4. Add a clear call to action: "Play Punch Skater".
-5. Add an IP positioning section: "Electric skateboard cyberpunk from Australia."
+5. Add an IP positioning section: "Electric skateboard cyberpunk."
 
 **Deliverables:**
 

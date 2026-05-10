@@ -159,7 +159,7 @@ function App() {
             Own the neon streets.
           </h1>
           <p className="hub-tagline">
-            Electric skateboard cyberpunk from Australia. Crews, couriers,
+            Electric skateboard cyberpunk. Crews, couriers,
             hackers, racers, and corporate rebels fight for reputation across
             the neon streets.
           </p>
@@ -276,12 +276,12 @@ function App() {
         {/* ── Footer ────────────────────────────────── */}
         <footer className="hub-footer">
           <p>
-            Sk8r Punk is an IP by{" "}
-            <strong>SP Digital LLC</strong>. Punch Skater created by Scotty M.
-            Perkins. Lore by C. William Perkins.
+            SK8R PUNK and Punch Skater are an original IP created by Scotty M.
+            Perkins with lore by C. William Perkins. Copyright © SP Digital LLC
+            2026
           </p>
           <p className="hub-footer-sub">
-            Electric skateboard cyberpunk from Australia.
+            Electric skateboard cyberpunk.
           </p>
         </footer>
       </main>
