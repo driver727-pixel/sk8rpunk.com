@@ -105,20 +105,24 @@ function App() {
     if (!audio) return;
     audio.volume = 0.35;
     audio.play().catch(() => {
-      // Autoplay blocked — stay paused until user interacts
+      // Autoplay blocked — reflect true state in UI
+      audio.muted = true;
+      setMuted(true);
     });
   }, []);
 
   const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
-    if (muted) {
-      audio.muted = false;
-      audio.play().catch(() => {});
-    } else {
-      audio.muted = true;
+    const nextMuted = !muted;
+    setMuted(nextMuted);
+    audio.muted = nextMuted;
+    if (!nextMuted) {
+      audio.play().catch(() => {
+        audio.muted = true;
+        setMuted(true);
+      });
     }
-    setMuted((m) => !m);
   };
 
   return (
