@@ -1014,6 +1014,13 @@ input::placeholder {
   border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
+.app-tile-fiction .app-tile-cover {
+  max-width: 320px;
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(106, 255, 153, 0.35);
+}
+
 .badge-live {
   background: rgba(79, 224, 127, 0.18);
   color: #4fe07f;

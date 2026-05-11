@@ -90,9 +90,9 @@ const games: GameTile[] = [
     id: "fiction",
     name: "Fiction & Novels",
     domain: null,
-    tagline: "Read the world.",
+    tagline: "Short story coming soon: \"Sk8r Punk Operation Nightshade Part 1\".",
     description:
-      "Lore, short fiction, and the expanding world bible of the Sk8r Punk universe. Written by C. William Perkins.",
+      "Lore, short fiction, and the expanding world of the Sk8r Punk universe. Written by Scotty M. Perkins with additional writing by C. William Perkins.",
     features: ["Short fiction", "World lore", "Canon releases"],
     status: "soon",
     href: null,
@@ -242,60 +242,69 @@ function App() {
           <p className="eyebrow">Games &amp; Projects</p>
           <h2 className="hub-section-h2">Enter the universe</h2>
           <div className="app-hub-grid">
-            {games.map((game) => (
-              <article
-                key={game.id}
-                className={`panel app-tile${game.status === "live" ? " hub-tile-featured" : ""}`}
-                style={{ borderLeftColor: game.accent }}
-              >
-                <div className="app-tile-header">
-                  <div>
-                    <h3>{game.name}</h3>
-                    {game.domain && (
-                      <p className="muted app-tile-domain">{game.domain}</p>
+            {games.map((game) => {
+              const tileClasses = [
+                "panel",
+                "app-tile",
+                game.status === "live" ? "hub-tile-featured" : "",
+                game.id === "fiction" ? "app-tile-fiction" : "",
+              ].filter(Boolean).join(" ");
+
+              return (
+                <article
+                  key={game.id}
+                  className={tileClasses}
+                  style={{ borderLeftColor: game.accent }}
+                >
+                  <div className="app-tile-header">
+                    <div>
+                      <h3>{game.name}</h3>
+                      {game.domain && (
+                        <p className="muted app-tile-domain">{game.domain}</p>
+                      )}
+                    </div>
+                    <span className={`badge ${game.status === "live" ? "badge-live" : "badge-soon"}`}>
+                      {game.status === "live" ? "Live" : "Coming soon"}
+                    </span>
+                  </div>
+
+                  <p className="app-tile-tagline">{game.tagline}</p>
+                  <p className="muted">{game.description}</p>
+                  {game.coverImage && (
+                    <img
+                      className="app-tile-cover"
+                      src={game.coverImage}
+                      alt={game.coverAlt ?? `${game.name} cover`}
+                      loading="lazy"
+                    />
+                  )}
+
+                  <div className="chip-row">
+                    {game.features.map((f) => (
+                      <span key={f} className="chip">{f}</span>
+                    ))}
+                  </div>
+
+                  <div className="route-actions">
+                    {game.href ? (
+                      <a
+                        className="app-tile-link-button"
+                        href={game.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ backgroundColor: game.accent, color: "#0a0e17" }}
+                      >
+                        {game.cta ?? `Visit ${game.name} ↗`}
+                      </a>
+                    ) : (
+                      <button disabled style={{ opacity: 0.45, cursor: "not-allowed" }}>
+                        In development
+                      </button>
                     )}
                   </div>
-                  <span className={`badge ${game.status === "live" ? "badge-live" : "badge-soon"}`}>
-                    {game.status === "live" ? "Live" : "Coming soon"}
-                  </span>
-                </div>
-
-                <p className="app-tile-tagline">{game.tagline}</p>
-                <p className="muted">{game.description}</p>
-                {game.coverImage && (
-                  <img
-                    className="app-tile-cover"
-                    src={game.coverImage}
-                    alt={game.coverAlt ?? `${game.name} cover`}
-                    loading="lazy"
-                  />
-                )}
-
-                <div className="chip-row">
-                  {game.features.map((f) => (
-                    <span key={f} className="chip">{f}</span>
-                  ))}
-                </div>
-
-                <div className="route-actions">
-                  {game.href ? (
-                    <a
-                      className="app-tile-link-button"
-                      href={game.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ backgroundColor: game.accent, color: "#0a0e17" }}
-                    >
-                      {game.cta ?? `Visit ${game.name} ↗`}
-                    </a>
-                  ) : (
-                    <button disabled style={{ opacity: 0.45, cursor: "not-allowed" }}>
-                      In development
-                    </button>
-                  )}
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </section>
 
