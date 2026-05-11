@@ -90,10 +90,10 @@ const games: GameTile[] = [
     id: "fiction",
     name: "Fiction & Novels",
     domain: null,
-    tagline: "Read the world.",
+    tagline: 'Short story coming soon: "Sk8r Punk Operation Nightshade Part 1".',
     description:
-      "Lore, short fiction, and the expanding world bible of the Sk8r Punk universe. Written by C. William Perkins.",
-    features: ["Short fiction", "World lore", "Canon releases"],
+      "Lore, short fiction, and the expanding world of the Sk8r Punk universe. Written by Scotty M. Perkins with additional writing by C. William Perkins",
+    features: ["Short fiction", "Operation Nightshade Part 1", "World lore", "Canon releases"],
     status: "soon",
     href: null,
     accent: "#6aff99",
@@ -245,7 +245,7 @@ function App() {
             {games.map((game) => (
               <article
                 key={game.id}
-                className={`panel app-tile${game.status === "live" ? " hub-tile-featured" : ""}`}
+                className={`panel app-tile${game.status === "live" ? " hub-tile-featured" : ""}${game.id === "fiction" ? " app-tile-fiction" : ""}`}
                 style={{ borderLeftColor: game.accent }}
               >
                 <div className="app-tile-header">
