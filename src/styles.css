@@ -1007,6 +1007,13 @@ input::placeholder {
   margin: 0;
 }
 
+.app-tile-cover {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
 .badge-live {
   background: rgba(79, 224, 127, 0.18);
   color: #4fe07f;
