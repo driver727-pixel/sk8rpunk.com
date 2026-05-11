@@ -21,7 +21,22 @@ const factions = [
   { name: "Alley Wraiths", desc: "Shortcut masters & underground messengers" },
 ];
 
-const games = [
+type GameTile = {
+  id: string;
+  name: string;
+  domain: string | null;
+  tagline: string;
+  description: string;
+  features: string[];
+  status: "live" | "soon";
+  href: string | null;
+  accent: string;
+  cta?: string;
+  coverImage?: string;
+  coverAlt?: string;
+};
+
+const games: GameTile[] = [
   {
     id: "punchskater",
     name: "Punch Skater",
@@ -30,7 +45,7 @@ const games = [
     description:
       "The first game in the Sk8r Punk universe. Create your crew of electric-skateboard riders, forge collectible cards, run missions, and climb the leaderboard.",
     features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Leaderboard"],
-    status: "live" as const,
+    status: "live",
     href: punchskaterUrl,
     accent: "#19f2ff",
     cta: "Play Punch Skater ↗",
@@ -43,7 +58,7 @@ const games = [
     description:
       "Squad management delivery game across neon Australian streets. Build your crew, pick routes, and fight for district control.",
     features: ["Route simulation", "Squad management", "District control"],
-    status: "soon" as const,
+    status: "soon",
     href: null,
     accent: "#a63cff",
   },
@@ -55,7 +70,7 @@ const games = [
     description:
       "Full electric-skate jousting combat. Shock lances, carbon poles, and road-sign shields. The neon streets are the arena.",
     features: ["Jousting combat", "Weapon crafting", "Tournament mode"],
-    status: "soon" as const,
+    status: "soon",
     href: null,
     accent: "#ff6a9a",
   },
@@ -67,7 +82,7 @@ const games = [
     description:
       "Casino-style wager and dice game built on Sk8r Punk faction territory. Every roll has stakes.",
     features: ["Faction wagers", "Dice mechanics", "Territory"],
-    status: "soon" as const,
+    status: "soon",
     href: null,
     accent: "#ffd36a",
   },
@@ -79,7 +94,7 @@ const games = [
     description:
       "Lore, short fiction, and the expanding world bible of the Sk8r Punk universe. Written by C. William Perkins.",
     features: ["Short fiction", "World lore", "Canon releases"],
-    status: "soon" as const,
+    status: "soon",
     href: null,
     accent: "#6aff99",
     coverImage: operationNightshadeCover,
@@ -93,7 +108,7 @@ const games = [
     description:
       "The complete world bible: districts, factions, board tech, jousting tradition, terminology, and cross-game canon.",
     features: ["Factions", "Districts", "Board tech", "Jousting lore"],
-    status: "soon" as const,
+    status: "soon",
     href: null,
     accent: "#19f2ff",
   },
@@ -251,7 +266,7 @@ function App() {
                   <img
                     className="app-tile-cover"
                     src={game.coverImage}
-                    alt={game.coverAlt ?? "Operation Nightshade book cover"}
+                    alt={game.coverAlt ?? `${game.name} cover`}
                     loading="lazy"
                   />
                 )}
