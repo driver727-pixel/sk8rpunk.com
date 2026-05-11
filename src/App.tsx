@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import operationNightshadeCover from "../Book-Cover-2500x3750.jpg";
 
 const punchskaterUrl = import.meta.env.VITE_DECK_BUILDER_URL || "https://punchskater.com";
 
@@ -81,6 +82,8 @@ const games = [
     status: "soon" as const,
     href: null,
     accent: "#6aff99",
+    coverImage: operationNightshadeCover,
+    coverAlt: "Operation Nightshade book cover",
   },
   {
     id: "codex",
@@ -244,6 +247,14 @@ function App() {
 
                 <p className="app-tile-tagline">{game.tagline}</p>
                 <p className="muted">{game.description}</p>
+                {game.coverImage && (
+                  <img
+                    className="app-tile-cover"
+                    src={game.coverImage}
+                    alt={game.coverAlt ?? "Book cover"}
+                    loading="lazy"
+                  />
+                )}
 
                 <div className="chip-row">
                   {game.features.map((f) => (
