@@ -251,7 +251,7 @@ function App() {
                   <img
                     className="app-tile-cover"
                     src={game.coverImage}
-                    alt={game.coverAlt ?? "Book cover"}
+                    alt={game.coverAlt ?? "Operation Nightshade book cover"}
                     loading="lazy"
                   />
                 )}
