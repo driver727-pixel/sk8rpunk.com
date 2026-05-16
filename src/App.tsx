@@ -410,7 +410,7 @@ function App() {
             className="cover-lightbox-img"
             src={operationNightshadeCover}
             alt="Operation Nightshade book cover — full size"
-            onClick={(e: MouseEvent) => { e.stopPropagation(); }}
+            onClick={(e) => { e.stopPropagation(); }}
           />
         </div>
       )}
