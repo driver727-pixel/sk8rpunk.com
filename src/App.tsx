@@ -126,6 +126,16 @@ function App() {
   // ── Lander ─────────────────────────────────────────────────────────────────
   const audioRef = useRef<HTMLAudioElement>(null);
   const [muted, setMuted] = useState(false);
+  const [coverOpen, setCoverOpen] = useState(false);
+  const coverCloseBtnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!coverOpen) return;
+    coverCloseBtnRef.current?.focus();
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setCoverOpen(false); };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [coverOpen]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -280,12 +290,27 @@ function App() {
                   <p className="app-tile-tagline">{game.tagline}</p>
                   <p className="muted">{game.description}</p>
                   {game.coverImage && (
-                    <img
-                      className="app-tile-cover"
-                      src={game.coverImage}
-                      alt={game.coverAlt ?? `${game.name} cover`}
-                      loading="lazy"
-                    />
+                    game.id === "fiction" ? (
+                      <button
+                        className="cover-lightbox-btn"
+                        onClick={() => setCoverOpen(true)}
+                        aria-label={`View full-size ${game.coverAlt ?? `${game.name} cover`}`}
+                      >
+                        <img
+                          className="app-tile-cover"
+                          src={game.coverImage}
+                          alt={game.coverAlt ?? `${game.name} cover`}
+                          loading="lazy"
+                        />
+                      </button>
+                    ) : (
+                      <img
+                        className="app-tile-cover"
+                        src={game.coverImage}
+                        alt={game.coverAlt ?? `${game.name} cover`}
+                        loading="lazy"
+                      />
+                    )
                   )}
 
                   <div className="chip-row">
@@ -364,6 +389,31 @@ function App() {
           </p>
         </footer>
       </main>
+      {/* ── Book cover lightbox ───────────────────── */}
+      {coverOpen && (
+        <div
+          className="cover-lightbox-backdrop"
+          onClick={() => setCoverOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Book cover full size"
+        >
+          <button
+            ref={coverCloseBtnRef}
+            className="cover-lightbox-close"
+            onClick={() => setCoverOpen(false)}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+          <img
+            className="cover-lightbox-img"
+            src={operationNightshadeCover}
+            alt="Operation Nightshade book cover — full size"
+            onClick={(e) => { e.stopPropagation(); }}
+          />
+        </div>
+      )}
     </div>
   );
 }
