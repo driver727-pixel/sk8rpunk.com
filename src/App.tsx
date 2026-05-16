@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import operationNightshadeCover from "../Book-Cover-2500x3750.jpg";
+import CharacterBios from "./CharacterBios";
+import { characters } from "./data/characters";
 
 const punchskaterUrl = import.meta.env.VITE_DECK_BUILDER_URL || "https://punchskater.com";
 
@@ -115,6 +117,13 @@ const games: GameTile[] = [
 ];
 
 function App() {
+  // ── Page routing via URL search param ──────────────────────────────────────
+  const page = new URLSearchParams(window.location.search).get("page");
+  if (page === "bios") {
+    return <CharacterBios />;
+  }
+
+  // ── Lander ─────────────────────────────────────────────────────────────────
   const audioRef = useRef<HTMLAudioElement>(null);
   const [muted, setMuted] = useState(false);
 
@@ -305,6 +314,41 @@ function App() {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        {/* ── Character Bios Teaser ──────────────────────────────── */}
+        <section className="hub-section">
+          <div className="char-teaser-banner-row">
+            <span className="char-teaser-live-badge">⚡ NOW LIVE</span>
+          </div>
+          <p className="eyebrow">Character Bios</p>
+          <h2 className="hub-section-h2">Meet the riders.</h2>
+          <p className="hub-section-copy">
+            Character bios for the Punch Skater crew and the operatives of
+            Operation Nightshade are live. Full visual reveal coming soon.
+          </p>
+          <div className="char-teaser-grid" aria-hidden="true">
+            {Array.from({ length: characters.length }, (_, i) => (
+              <div key={i} className="char-teaser-card">
+                <div className="char-teaser-portrait" />
+                <div className="char-teaser-name-bar" />
+                <div className="char-teaser-bio-lines">
+                  <div className="char-teaser-bio-line" />
+                  <div className="char-teaser-bio-line" />
+                  <div className="char-teaser-bio-line" />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="route-actions">
+            <a
+              className="app-tile-link-button"
+              href="/?page=bios"
+              style={{ backgroundColor: "#19f2ff", color: "#0a0e17" }}
+            >
+              View Character Bios →
+            </a>
           </div>
         </section>
 
