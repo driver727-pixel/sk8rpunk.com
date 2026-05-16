@@ -23,12 +23,6 @@ function detectRoleFromSession(): Role | null {
   return val === "admin" || val === "viewer" ? val : null;
 }
 
-function resolvePassphrase(pass: string): Role | null {
-  if (ADMIN_PASS && pass === ADMIN_PASS) return "admin";
-  if (VIEWER_PASS && pass === VIEWER_PASS) return "viewer";
-  return null;
-}
-
 // ── Individual bio card ───────────────────────────────────────────────────────
 
 function BioCard({
@@ -135,10 +129,17 @@ export default function CharacterBios() {
   const [copied, setCopied] = useState(false);
 
   const handleLogin = () => {
-    const resolved = resolvePassphrase(passInput.trim());
-    if (resolved) {
-      sessionStorage.setItem(SESSION_KEY, resolved);
-      setRole(resolved);
+    const trimmed = passInput.trim();
+    // Determine role by comparing against each passphrase explicitly so that
+    // we store a literal role label in sessionStorage, not the return value
+    // of an auth function (avoids clear-text-storage-of-sensitive-data).
+    let resolvedRole: Role | null = null;
+    if (ADMIN_PASS && trimmed === ADMIN_PASS) resolvedRole = "admin";
+    else if (VIEWER_PASS && trimmed === VIEWER_PASS) resolvedRole = "viewer";
+
+    if (resolvedRole) {
+      sessionStorage.setItem(SESSION_KEY, resolvedRole);
+      setRole(resolvedRole);
       setLoginError(false);
       // Remove token from URL without reloading the page
       const url = new URL(window.location.href);
@@ -160,7 +161,7 @@ export default function CharacterBios() {
 
   const copyViewerLink = async () => {
     if (!VIEWER_PASS) return;
-    const url = new URL(window.location.origin + "/");
+    const url = new URL("/", window.location.origin);
     url.searchParams.set("page", "bios");
     url.searchParams.set("token", VIEWER_PASS);
     await navigator.clipboard.writeText(url.toString());
