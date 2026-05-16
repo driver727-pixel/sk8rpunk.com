@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import operationNightshadeCover from "../Book-Cover-2500x3750.jpg";
+import operationNightshadeCover from "../SMPDIGI.jpg";
 import CharacterBios from "./CharacterBios";
 import { characters } from "./data/characters";
 
