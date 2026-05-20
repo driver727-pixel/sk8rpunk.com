@@ -1324,14 +1324,16 @@ input::placeholder {
   }
 }
 
-/* ── Character Bios Teaser (lander) ─────────────────────────────────────── */
+/* ── Teaser section banner row (shared by Joustur Skatur + Character Bios) ── */
 
-.char-teaser-banner-row {
+.teaser-banner-row {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.25rem;
 }
+
+/* ── Character Bios Teaser (lander) ─────────────────────────────────────── */
 
 .char-teaser-live-badge {
   display: inline-flex;

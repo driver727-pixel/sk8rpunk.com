@@ -3,7 +3,7 @@ import operationNightshadeCover from "../SMPDIGI.jpg";
 import CharacterBios from "./CharacterBios";
 import { characters } from "./data/characters";
 
-const punchskaterUrl = import.meta.env.VITE_DECK_BUILDER_URL || "https://punchskater.com";
+const punchskaterUrl = import.meta.env.VITE_PUNCHSKATER_URL || "https://punchskater.com";
 
 const slideshowImages = [
   "https://github.com/user-attachments/assets/8210c5b0-3690-48de-9e43-59e879d7a5df",
@@ -119,19 +119,20 @@ const games: GameTile[] = [
 function App() {
   // ── Page routing via URL search param ──────────────────────────────────────
   const page = new URLSearchParams(window.location.search).get("page");
-  if (page === "bios") {
-    return <CharacterBios />;
-  }
-  if (page === "joustur-skatur") {
-    window.location.replace(punchskaterUrl);
-    return null;
-  }
 
-  // ── Lander ─────────────────────────────────────────────────────────────────
+  // ── All state and refs declared unconditionally (Rules of Hooks) ───────────
   const audioRef = useRef<HTMLAudioElement>(null);
   const [muted, setMuted] = useState(false);
   const [coverOpen, setCoverOpen] = useState(false);
   const coverCloseBtnRef = useRef<HTMLButtonElement>(null);
+
+  // Redirect for the ?page=joustur-skatur marketing/deep-link route.
+  // Must be a side-effect — synchronous navigation during render is not allowed.
+  useEffect(() => {
+    if (page === "joustur-skatur") {
+      window.location.replace(punchskaterUrl);
+    }
+  }, [page]); // page is stable (URL never changes), but listed for exhaustive-deps
 
   useEffect(() => {
     if (!coverOpen) return;
@@ -142,6 +143,7 @@ function App() {
   }, [coverOpen]);
 
   useEffect(() => {
+    if (page === "joustur-skatur") return; // skip autoplay during redirect
     const audio = audioRef.current;
     if (!audio) return;
     audio.volume = 0.35;
@@ -152,6 +154,15 @@ function App() {
     });
   }, []);
 
+  // ── Conditional page renders (must come after all hooks) ───────────────────
+  if (page === "bios") {
+    return <CharacterBios />;
+  }
+  if (page === "joustur-skatur") {
+    return null;
+  }
+
+  // ── Lander ─────────────────────────────────────────────────────────────────
   const toggleMute = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -348,7 +359,7 @@ function App() {
 
         {/* ── Joustur Skatur Teaser ─────────────────────────────── */}
         <section className="hub-section">
-          <div className="char-teaser-banner-row">
+          <div className="teaser-banner-row">
             <span className="badge badge-soon">⚔ Coming Soon Inside Punch Skater</span>
           </div>
           <p className="eyebrow">Punch Skater Mode</p>
@@ -377,7 +388,7 @@ function App() {
 
         {/* ── Character Bios Teaser ──────────────────────────────── */}
         <section className="hub-section">
-          <div className="char-teaser-banner-row">
+          <div className="teaser-banner-row">
             <span className="char-teaser-live-badge">⚡ NOW LIVE</span>
           </div>
           <p className="eyebrow">Character Bios</p>
