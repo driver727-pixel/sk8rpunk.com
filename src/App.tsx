@@ -132,7 +132,7 @@ function App() {
     if (page === "joustur-skatur") {
       window.location.replace(punchskaterUrl);
     }
-  }, []); // runs once on mount; page is stable (derived from URL, never changes)
+  }, [page]); // page is stable (URL never changes), but listed for exhaustive-deps
 
   useEffect(() => {
     if (!coverOpen) return;
