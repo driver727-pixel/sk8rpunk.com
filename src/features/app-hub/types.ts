@@ -25,7 +25,7 @@ interface PlatformAppBase {
   /** Optional list of feature chips displayed on the hub tile. */
   features?: string[];
   /** Whether the app is usable today or still in development. */
-  status: "live" | "coming-soon";
+  status: "live" | "soon";
   /** Which universe or company division the app belongs to. */
   universe: AppUniverse;
 }

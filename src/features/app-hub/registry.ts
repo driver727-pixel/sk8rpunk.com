@@ -8,6 +8,12 @@ import type { PlatformApp } from "./types";
  * - `"sp-digital"` — other SP Digital LLC products (linked externally).
  *
  * Add new entries here as more projects are integrated.
+ *
+ * NOTE: This registry and AppHub.tsx are not yet wired into App.tsx.
+ * The live hub renders its own inline games list. When the hub is refactored
+ * to use this registry, sync the entries (names, taglines, features, status)
+ * with the GameTile array in App.tsx, and include Joustur Skatur as a feature
+ * chip on the punchskater entry.
  */
 export const PLATFORM_APPS: readonly PlatformApp[] = [
   /* ── Skater-Punk universe ─────────────────────── */
