@@ -46,7 +46,7 @@ const games: GameTile[] = [
     tagline: "Collect. Build. Joust. Win.",
     description:
       "The first game in the Sk8r Punk universe. Create your crew of electric-skateboard riders, forge collectible cards, run missions, and climb the leaderboard.",
-    features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Leaderboard"],
+    features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Joustur Skatur (soon)", "Leaderboard"],
     status: "live",
     href: punchskaterUrl,
     accent: "#19f2ff",
@@ -121,6 +121,10 @@ function App() {
   const page = new URLSearchParams(window.location.search).get("page");
   if (page === "bios") {
     return <CharacterBios />;
+  }
+  if (page === "joustur-skatur") {
+    window.location.replace(punchskaterUrl);
+    return null;
   }
 
   // ── Lander ─────────────────────────────────────────────────────────────────
@@ -339,6 +343,35 @@ function App() {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        {/* ── Joustur Skatur Teaser ─────────────────────────────── */}
+        <section className="hub-section">
+          <div className="char-teaser-banner-row">
+            <span className="badge badge-soon">⚔ Coming Soon Inside Punch Skater</span>
+          </div>
+          <p className="eyebrow">Punch Skater Mode</p>
+          <h2 className="hub-section-h2">Joustur Skatur</h2>
+          <p className="hub-section-copy">
+            An async street-ritual skateboard-game mode inspired by the Royal Game of Ur.
+            Cast USB Shards. Hold the lane. Knock rivals back to the Garage.{" "}
+            <strong>Coming soon inside Punch Skater.</strong>
+          </p>
+          <p className="hub-section-copy muted">
+            Punch Skater is the live gateway into the Sk8r Punk universe. Until Joustur Skatur drops,
+            forge your crew there.
+          </p>
+          <div className="route-actions">
+            <a
+              className="app-tile-link-button"
+              href={punchskaterUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundColor: "#19f2ff", color: "#0a0e17" }}
+            >
+              Play Punch Skater ↗
+            </a>
           </div>
         </section>
 
