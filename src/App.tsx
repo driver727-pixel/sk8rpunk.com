@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import operationNightshadeCover from "../SMPDIGI.jpg";
 import CharacterBios from "./CharacterBios";
 import { characters } from "./data/characters";
+import { useSeo } from "./seo";
 
 const punchskaterUrl = import.meta.env.VITE_PUNCHSKATER_URL || "https://punchskater.com";
 
@@ -125,6 +126,8 @@ function App() {
   const [muted, setMuted] = useState(false);
   const [coverOpen, setCoverOpen] = useState(false);
   const coverCloseBtnRef = useRef<HTMLButtonElement>(null);
+
+  useSeo(page, punchskaterUrl);
 
   // Redirect for the ?page=joustur-skatur marketing/deep-link route.
   // Must be a side-effect — synchronous navigation during render is not allowed.

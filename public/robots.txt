@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /*?page=bios
+Disallow: /*?page=joustur-skatur
+
+Sitemap: https://sk8rpunk.com/sitemap.xml
