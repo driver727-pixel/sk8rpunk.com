@@ -4,6 +4,15 @@ import CharacterBios from "./CharacterBios";
 import { characters } from "./data/characters";
 import { useSeo } from "./seo";
 
+// Neon orbs rendered behind the hero for an ambient depth effect
+const HERO_ORBS = [
+  { cx: "18%", cy: "28%", r: 280, color: "rgba(25,242,255,0.07)" },
+  { cx: "82%", cy: "18%", r: 220, color: "rgba(166,60,255,0.09)" },
+  { cx: "55%", cy: "75%", r: 180, color: "rgba(255,106,154,0.06)" },
+  { cx: "6%",  cy: "68%", r: 140, color: "rgba(25,242,255,0.05)" },
+  { cx: "92%", cy: "62%", r: 200, color: "rgba(166,60,255,0.06)" },
+] as const;
+
 const punchskaterUrl = import.meta.env.VITE_PUNCHSKATER_URL || "https://punchskater.com";
 
 const slideshowImages = [
@@ -126,6 +135,7 @@ function App() {
   const [muted, setMuted] = useState(false);
   const [coverOpen, setCoverOpen] = useState(false);
   const coverCloseBtnRef = useRef<HTMLButtonElement>(null);
+  const slideshowRef = useRef<HTMLDivElement>(null);
 
   useSeo(page, punchskaterUrl);
 
@@ -136,6 +146,46 @@ function App() {
       window.location.replace(punchskaterUrl);
     }
   }, [page]); // page is stable (URL never changes), but listed for exhaustive-deps
+
+  // ── Parallax: slide hero backdrop at 35% scroll speed ──────────────────────
+  useEffect(() => {
+    if (page === "joustur-skatur") return;
+    const el = slideshowRef.current;
+    if (!el) return;
+    let rafId = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        el.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [page]);
+
+  // ── Scroll-reveal: observe hub-sections and individual grid children ────────
+  useEffect(() => {
+    if (page === "joustur-skatur" || page === "bios") return;
+    const targets = document.querySelectorAll<HTMLElement>(
+      ".hub-section, .hub-faction-chip, .app-tile"
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -32px 0px" }
+    );
+    targets.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, [page]);
 
   useEffect(() => {
     if (!coverOpen) return;
@@ -193,7 +243,23 @@ function App() {
       </button>
       {/* ── Hero ──────────────────────────────────── */}
       <section className="hub-hero">
-        <div className="placeholder-slideshow" aria-hidden="true">
+        {/* Neon ambient orbs */}
+        <div className="hub-hero-orbs" aria-hidden="true">
+          {HERO_ORBS.map((orb, i) => (
+            <div
+              key={i}
+              className="hub-hero-orb"
+              style={{
+                left: orb.cx,
+                top: orb.cy,
+                width: orb.r * 2,
+                height: orb.r * 2,
+                background: `radial-gradient(circle, ${orb.color}, transparent 70%)`,
+              }}
+            />
+          ))}
+        </div>
+        <div ref={slideshowRef} className="placeholder-slideshow" aria-hidden="true">
           {slideshowImages.map((imageUrl, index) => (
             <div
               key={imageUrl}
@@ -206,6 +272,7 @@ function App() {
           ))}
         </div>
         <div className="placeholder-backdrop" aria-hidden="true" />
+        <div className="hub-hero-scanlines" aria-hidden="true" />
 
         <div className="hub-hero-content">
           <p className="eyebrow">SK8R PUNK UNIVERSE</p>
@@ -265,8 +332,12 @@ function App() {
             ideology. Which faction calls to you?
           </p>
           <div className="hub-factions-grid">
-            {factions.map((f) => (
-              <div key={f.name} className="hub-faction-chip">
+            {factions.map((f, i) => (
+              <div
+                key={f.name}
+                className="hub-faction-chip"
+                style={{ "--stagger-delay": `${i * 0.06}s` } as React.CSSProperties}
+              >
                 <strong>{f.name}</strong>
                 <span>{f.desc}</span>
               </div>
@@ -279,7 +350,7 @@ function App() {
           <p className="eyebrow">Games &amp; Projects</p>
           <h2 className="hub-section-h2">Enter the universe</h2>
           <div className="app-hub-grid">
-            {games.map((game) => {
+            {games.map((game, i) => {
               const tileClasses = [
                 "panel",
                 "app-tile",
@@ -291,7 +362,10 @@ function App() {
                 <article
                   key={game.id}
                   className={tileClasses}
-                  style={{ borderLeftColor: game.accent }}
+                  style={{
+                    borderLeftColor: game.accent,
+                    "--stagger-delay": `${i * 0.07}s`,
+                  } as React.CSSProperties}
                 >
                   <div className="app-tile-header">
                     <div>
