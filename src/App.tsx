@@ -152,11 +152,18 @@ function App() {
     if (page === "joustur-skatur") return;
     const el = slideshowRef.current;
     if (!el) return;
+    let rafId = 0;
     const onScroll = () => {
-      el.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        el.style.transform = `translateY(${window.scrollY * 0.35}px)`;
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [page]);
 
   // ── Scroll-reveal: observe hub-sections and individual grid children ────────
@@ -325,8 +332,12 @@ function App() {
             ideology. Which faction calls to you?
           </p>
           <div className="hub-factions-grid">
-            {factions.map((f) => (
-              <div key={f.name} className="hub-faction-chip">
+            {factions.map((f, i) => (
+              <div
+                key={f.name}
+                className="hub-faction-chip"
+                style={{ "--stagger-delay": `${i * 0.06}s` } as React.CSSProperties}
+              >
                 <strong>{f.name}</strong>
                 <span>{f.desc}</span>
               </div>
@@ -339,7 +350,7 @@ function App() {
           <p className="eyebrow">Games &amp; Projects</p>
           <h2 className="hub-section-h2">Enter the universe</h2>
           <div className="app-hub-grid">
-            {games.map((game) => {
+            {games.map((game, i) => {
               const tileClasses = [
                 "panel",
                 "app-tile",
@@ -351,7 +362,10 @@ function App() {
                 <article
                   key={game.id}
                   className={tileClasses}
-                  style={{ borderLeftColor: game.accent }}
+                  style={{
+                    borderLeftColor: game.accent,
+                    "--stagger-delay": `${i * 0.07}s`,
+                  } as React.CSSProperties}
                 >
                   <div className="app-tile-header">
                     <div>

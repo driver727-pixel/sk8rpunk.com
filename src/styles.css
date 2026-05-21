@@ -1000,6 +1000,7 @@ input::placeholder {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.25rem;
+  perspective: 1200px;
 }
 
 .app-tile {
@@ -1023,16 +1024,18 @@ input::placeholder {
   transform: translateY(0);
 }
 
-/* Staggered entrance delays for grid tiles */
-.app-hub-grid .app-tile:nth-child(1) { transition-delay: 0s; }
-.app-hub-grid .app-tile:nth-child(2) { transition-delay: 0.07s; }
-.app-hub-grid .app-tile:nth-child(3) { transition-delay: 0.14s; }
-.app-hub-grid .app-tile:nth-child(4) { transition-delay: 0.21s; }
-.app-hub-grid .app-tile:nth-child(5) { transition-delay: 0.28s; }
-.app-hub-grid .app-tile:nth-child(6) { transition-delay: 0.35s; }
+/* Staggered entrance delays via inline CSS custom property */
+.app-hub-grid .app-tile {
+  transition-delay: var(--stagger-delay, 0s);
+}
+
+/* Reset delay once visible so hover transitions are instant */
+.app-hub-grid .app-tile.is-visible {
+  transition-delay: 0s;
+}
 
 .app-tile:hover {
-  transform: translateY(-6px) perspective(800px) rotateX(1deg);
+  transform: translateY(-6px) rotateX(1deg);
   box-shadow:
     0 28px 56px rgba(0, 0, 0, 0.38),
     0 0 0 1px rgba(25, 242, 255, 0.22),
@@ -1293,7 +1296,6 @@ input::placeholder {
   border-radius: 50%;
   transform: translate(-50%, -50%);
   animation: orb-drift 18s ease-in-out infinite alternate;
-  will-change: transform;
 }
 
 .hub-hero-orb:nth-child(2) {
@@ -1483,13 +1485,15 @@ input::placeholder {
     background 200ms ease;
 }
 
-/* Staggered entrance for faction chips */
-.hub-factions-grid .hub-faction-chip:nth-child(1) { transition-delay: 0s; }
-.hub-factions-grid .hub-faction-chip:nth-child(2) { transition-delay: 0.06s; }
-.hub-factions-grid .hub-faction-chip:nth-child(3) { transition-delay: 0.12s; }
-.hub-factions-grid .hub-faction-chip:nth-child(4) { transition-delay: 0.18s; }
-.hub-factions-grid .hub-faction-chip:nth-child(5) { transition-delay: 0.24s; }
-.hub-factions-grid .hub-faction-chip:nth-child(6) { transition-delay: 0.30s; }
+/* Staggered entrance delays via inline CSS custom property */
+.hub-factions-grid .hub-faction-chip {
+  transition-delay: var(--stagger-delay, 0s);
+}
+
+/* Reset delay once visible so hover transitions are instant */
+.hub-factions-grid .hub-faction-chip.is-visible {
+  transition-delay: 0s;
+}
 
 .hub-faction-chip:hover {
   transform: translateY(-4px) scale(1.02);
