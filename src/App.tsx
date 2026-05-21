@@ -438,7 +438,7 @@ function App() {
         <section className="hype-ad-section" aria-label="Advertisement">
           <img
             className="hype-ad-img"
-            src="/hype BA.png"
+            src="/hype-BA.png"
             alt="Hype — Sk8r Punk universe advertisement"
             loading="lazy"
           />
