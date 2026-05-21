@@ -450,6 +450,12 @@ function App() {
             Punch Skater is the live gateway into the Sk8r Punk universe. Until Joustur Skatur drops,
             forge your crew there.
           </p>
+          <img
+            className="joustur-attractor"
+            src="/Joustur-board.png"
+            alt="Joustur Skatur gameplay board — coming soon inside Punch Skater"
+            loading="lazy"
+          />
           <div className="route-actions">
             <a
               className="app-tile-link-button"

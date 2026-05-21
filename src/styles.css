@@ -1563,6 +1563,18 @@ input::placeholder {
   margin-bottom: 0.25rem;
 }
 
+/* ── Joustur Skatur attractor image ─────────────────────────────────────── */
+
+.joustur-attractor {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(25, 242, 255, 0.15);
+}
+
 /* ── Character Bios Teaser (lander) ─────────────────────────────────────── */
 
 .char-teaser-live-badge {
