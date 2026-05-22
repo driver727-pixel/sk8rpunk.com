@@ -56,7 +56,7 @@ const games: GameTile[] = [
     tagline: "Collect. Build. Joust. Win.",
     description:
       "The first game in the Sk8r Punk universe. Create your crew of electric-skateboard riders, forge collectible cards, run missions, and climb the leaderboard.",
-    features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Joustur Skatur (soon)", "Leaderboard"],
+    features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Joustur Skatur", "Leaderboard"],
     status: "live",
     href: punchskaterUrl,
     accent: "#19f2ff",
@@ -444,26 +444,30 @@ function App() {
           />
         </section>
 
-        {/* ── Joustur Skatur Teaser ─────────────────────────────── */}
+        {/* ── Joustur Skatur Announcement ─────────────────────────────── */}
         <section className="hub-section">
           <div className="teaser-banner-row">
-            <span className="badge badge-soon">⚔ Coming Soon Inside Punch Skater</span>
+            <span className="char-teaser-live-badge">⚡ NOW LIVE</span>
           </div>
           <p className="eyebrow">Punch Skater Mode</p>
           <h2 className="hub-section-h2">Joustur Skatur</h2>
+          <div className="announcement-highlight">
+            <p className="announcement-text">
+              <strong>Joustur Skatur game mode is live! Play now!</strong>
+            </p>
+          </div>
           <p className="hub-section-copy">
             An async street-ritual skateboard-game mode inspired by the Royal Game of Ur.
             Cast USB Shards. Hold the lane. Knock rivals back to the Garage.{" "}
-            <strong>Coming soon inside Punch Skater.</strong>
+            <strong>Now live inside Punch Skater.</strong>
           </p>
           <p className="hub-section-copy muted">
-            Punch Skater is the live gateway into the Sk8r Punk universe. Until Joustur Skatur drops,
-            forge your crew there.
+            Punch Skater is the gateway into the Sk8r Punk universe. Jump in and experience Joustur Skatur today.
           </p>
           <img
             className="joustur-attractor"
             src="/Joustur-board.png"
-            alt="Joustur Skatur gameplay board — coming soon inside Punch Skater"
+            alt="Joustur Skatur gameplay board — now live inside Punch Skater"
             loading="lazy"
           />
           <div className="route-actions">
