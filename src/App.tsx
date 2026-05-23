@@ -24,15 +24,6 @@ const slideshowImages = [
   "/Skateboards in space2.png",
 ];
 
-const factions = [
-  { name: "Rust Kids", desc: "DIY punk scavengers & junkyard riders" },
-  { name: "Neon Saints", desc: "Stylish crowd-favourite competitors" },
-  { name: "Signal Ghosts", desc: "Hackers, route manipulators, stealth riders" },
-  { name: "Chrome Syndicate", desc: "Corporate-backed elite racers" },
-  { name: "Voltage Vultures", desc: "High-speed battery extremists" },
-  { name: "Alley Wraiths", desc: "Shortcut masters & underground messengers" },
-];
-
 type GameTile = {
   id: string;
   name: string;
@@ -321,28 +312,6 @@ function App() {
             Build a squad. Charge your boards. Run the routes. Win the jousts.
             Own the neon streets.
           </blockquote>
-        </section>
-
-        {/* ── Factions ──────────────────────────────── */}
-        <section className="hub-section">
-          <p className="eyebrow">Factions</p>
-          <h2 className="hub-section-h2">Choose your crew</h2>
-          <p className="hub-section-copy">
-            Every skater ends up aligned with a crew, district, style, or
-            ideology. Which faction calls to you?
-          </p>
-          <div className="hub-factions-grid">
-            {factions.map((f, i) => (
-              <div
-                key={f.name}
-                className="hub-faction-chip"
-                style={{ "--stagger-delay": `${i * 0.06}s` } as React.CSSProperties}
-              >
-                <strong>{f.name}</strong>
-                <span>{f.desc}</span>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* ── Games hub ─────────────────────────────── */}
