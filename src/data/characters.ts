@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// Character Bio data — Sk8r Punk Universe
+// Character Bio data — Sk8r Punk™ Universe
 // TODO: Replace placeholder names, bios, traits, and image paths with your
 //       final content from the doc. Images go in /public/characters/.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -21,7 +21,7 @@ export type Character = {
 };
 
 export const characters: Character[] = [
-  // ── Punch Skater ───────────────────────────────────────────────────────────
+  // ── Punch Skater™ ───────────────────────────────────────────────────────────
   {
     id: "blade",
     name: "Blade",

@@ -42,16 +42,16 @@ type GameTile = {
 const games: GameTile[] = [
   {
     id: "punchskater",
-    name: "Punch Skater",
+    name: "Punch Skater™",
     domain: "punchskater.com",
     tagline: "Collect. Build. Joust. Win.",
     description:
-      "The first game in the Sk8r Punk universe. Create your crew of electric-skateboard riders, forge collectible cards, run missions, and climb the leaderboard.",
-    features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Joustur Skatur", "Leaderboard"],
+      "The first game in the Sk8r Punk™ universe. Create your crew of electric-skateboard riders, forge collectible cards, run missions, and climb the leaderboard.",
+    features: ["Card creation", "Crew of 6", "Missions", "Jousting", "Joustur Skatur™", "Leaderboard"],
     status: "live",
     href: punchskaterUrl,
     accent: "#19f2ff",
-    cta: "Play Punch Skater ↗",
+    cta: "Play Punch Skater™ ↗",
   },
   {
     id: "courier",
@@ -83,7 +83,7 @@ const games: GameTile[] = [
     domain: null,
     tagline: "Roll the district. Take the risk.",
     description:
-      "Casino-style wager and dice game built on Sk8r Punk faction territory. Every roll has stakes.",
+      "Casino-style wager and dice game built on Sk8r Punk™ faction territory. Every roll has stakes.",
     features: ["Faction wagers", "Dice mechanics", "Territory"],
     status: "soon",
     href: null,
@@ -93,9 +93,9 @@ const games: GameTile[] = [
     id: "fiction",
     name: "Fiction & Novels",
     domain: null,
-    tagline: "Short story coming soon: \"Sk8r Punk Operation Nightshade Part 1\".",
+    tagline: "Short story coming soon: \"Sk8r Punk™ Operation Nightshade Part 1\".",
     description:
-      "Lore, short fiction, and the expanding world of the Sk8r Punk universe. Written by Scotty M. Perkins with additional writing by C. William Perkins.",
+      "Lore, short fiction, and the expanding world of the Sk8r Punk™ universe. Written by Scotty M. Perkins with additional writing by C. William Perkins.",
     features: ["Short fiction", "World lore", "Canon releases"],
     status: "soon",
     href: null,
@@ -266,7 +266,7 @@ function App() {
         <div className="hub-hero-scanlines" aria-hidden="true" />
 
         <div className="hub-hero-content">
-          <p className="eyebrow">SK8R PUNK UNIVERSE</p>
+          <p className="eyebrow">SK8R PUNK™ UNIVERSE</p>
           <h1 className="hub-hero-h1">
             Build a squad.<br />
             Own the neon streets.
@@ -283,14 +283,14 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Play Punch Skater
+            Play Punch Skater™
           </a>
           <p className="hub-cta-sub">punchskater.com — free to play now</p>
 
           <img
             className="placeholder-logo"
             src="https://github.com/user-attachments/assets/9525a68e-752d-4568-b62f-b5d7bd37d5eb"
-            alt="Sk8rPunk.com — a Cyberpunk Esk8r world by Scotty M. Perkins"
+            alt="Sk8rPunk™ logo — a Cyberpunk Esk8r world by Scotty M. Perkins"
           />
         </div>
       </section>
@@ -301,7 +301,7 @@ function App() {
           <p className="eyebrow">The World</p>
           <h2 className="hub-section-h2">One universe. Many ways to ride.</h2>
           <p className="hub-section-copy">
-            Sk8r Punk is the umbrella universe — novels, lore, games, card
+            Sk8r Punk™ is the umbrella universe — novels, lore, games, card
             systems, and future media. Electric skateboards are sport,
             transport, class marker, weapon platform, and personal expression.
             In cyberpunk Australia, skaters run the routes, joust for
@@ -408,35 +408,35 @@ function App() {
           <img
             className="hype-ad-img"
             src="/hype-BA.png"
-            alt="Hype — Sk8r Punk universe advertisement"
+            alt="Hype — Sk8r Punk™ universe advertisement"
             loading="lazy"
           />
         </section>
 
-        {/* ── Joustur Skatur Announcement ─────────────────────────────── */}
+        {/* ── Joustur Skatur™ Announcement ─────────────────────────────── */}
         <section className="hub-section">
           <div className="teaser-banner-row">
             <span className="char-teaser-live-badge">⚡ NOW LIVE</span>
           </div>
-          <p className="eyebrow">Punch Skater Mode</p>
-          <h2 className="hub-section-h2">Joustur Skatur</h2>
+          <p className="eyebrow">Punch Skater™ Mode</p>
+          <h2 className="hub-section-h2">Joustur Skatur™</h2>
           <div className="announcement-highlight">
             <p className="announcement-text">
-              <strong>Joustur Skatur game mode is live! Play now!</strong>
+              <strong>Joustur Skatur™ game mode is live! Play now!</strong>
             </p>
           </div>
           <p className="hub-section-copy">
             An async street-ritual skateboard-game mode inspired by the Royal Game of Ur.
             Cast USB Shards. Hold the lane. Knock rivals back to the Garage.{" "}
-            <strong>Now live inside Punch Skater.</strong>
+            <strong>Now live inside Punch Skater™.</strong>
           </p>
           <p className="hub-section-copy muted">
-            Punch Skater is the gateway into the Sk8r Punk universe. Jump in and experience Joustur Skatur today.
+            Punch Skater™ is the gateway into the Sk8r Punk™ universe. Jump in and experience Joustur Skatur™ today.
           </p>
           <img
             className="joustur-attractor"
             src="/Joustur-board.png"
-            alt="Joustur Skatur gameplay board — now live inside Punch Skater"
+            alt="Joustur Skatur™ gameplay board — now live inside Punch Skater™"
             loading="lazy"
           />
           <div className="route-actions">
@@ -447,7 +447,7 @@ function App() {
               rel="noopener noreferrer"
               style={{ backgroundColor: "#19f2ff", color: "#0a0e17" }}
             >
-              Play Punch Skater ↗
+              Play Punch Skater™ ↗
             </a>
           </div>
         </section>
@@ -460,7 +460,7 @@ function App() {
           <p className="eyebrow">Character Bios</p>
           <h2 className="hub-section-h2">Meet the riders.</h2>
           <p className="hub-section-copy">
-            Character bios for the Punch Skater crew and the operatives of
+            Character bios for the Punch Skater™ crew and the operatives of
             Operation Nightshade are live. Full visual reveal coming soon.
           </p>
           <div className="char-teaser-grid" aria-hidden="true">
@@ -490,7 +490,7 @@ function App() {
         {/* ── Footer ────────────────────────────────── */}
         <footer className="hub-footer">
           <p>
-            SK8R PUNK and Punch Skater are an original IP created by Scotty M.
+            SK8R PUNK™ and Punch Skater™ are an original IP created by Scotty M.
             Perkins with lore by C. William Perkins. Copyright © SP Digital LLC
             2026
           </p>

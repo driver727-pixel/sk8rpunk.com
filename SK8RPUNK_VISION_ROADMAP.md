@@ -1,10 +1,10 @@
-# Sk8r Punk Universe Roadmap
+# Sk8r Punk™ Universe Roadmap
 
-Sk8r Punk is the umbrella intellectual property for a connected universe of electric-skateboard cyberpunk games, fiction, lore, tools, and future media. Punch Skater is the first public game within this universe, but it should not carry every possible gameplay idea alone.
+Sk8r Punk™ is the umbrella intellectual property for a connected universe of electric-skateboard cyberpunk games, fiction, lore, tools, and future media. Punch Skater™ is the first public game within this universe, but it should not carry every possible gameplay idea alone.
 
 ## North Star
 
-**Sk8r Punk is a cyberpunk universe where electric skateboard crews, couriers, racers, jousters, hackers, collectors, and corporate rebels fight for reputation across neon Australian streets.**
+**Sk8r Punk™ is a cyberpunk universe where electric skateboard crews, couriers, racers, jousters, hackers, collectors, and corporate rebels fight for reputation across neon Australian streets.**
 
 The core fantasy:
 
@@ -14,19 +14,19 @@ The core fantasy:
 
 ### Umbrella IP
 
-**Sk8r Punk**
+**Sk8r Punk™**
 
 The whole fictional universe: novels, lore, websites, games, card systems, future tabletop products, casino-style modes, jousting games, delivery games, faction wars, comics, and more.
 
 ### First Card Game / Gateway Product
 
-**Punch Skater**
+**Punch Skater™**
 
-The collectible card creation, trading, mission, racing, jousting-lite, and leaderboard game. Punch Skater introduces the world and gives players a reason to collect, create, trade, and compete.
+The collectible card creation, trading, mission, racing, jousting-lite, and leaderboard game. Punch Skater™ introduces the world and gives players a reason to collect, create, trade, and compete.
 
 ### Broader Game Concepts to Preserve
 
-These should remain available as future Sk8r Punk projects rather than being forced into Punch Skater immediately:
+These should remain available as future Sk8r Punk™ projects rather than being forced into Punch Skater™ immediately:
 
 - Full electric-skate jousting combat game
 - Delivery-route squad management game
@@ -86,8 +86,8 @@ This repo should become the universe hub and future platform layer.
 
 Responsibilities:
 
-- Explain the Sk8r Punk universe
-- Link to Punch Skater
+- Explain the Sk8r Punk™ universe
+- Link to Punch Skater™
 - Present the world bible and fiction gateway
 - Host hub pages for future games
 - Define cross-game canon
@@ -113,7 +113,7 @@ Responsibilities:
 
 ### Phase 0 — Canon Lock and Repository Alignment
 
-**Goal:** Define what belongs to Sk8r Punk versus what belongs to Punch Skater.
+**Goal:** Define what belongs to Sk8r Punk™ versus what belongs to Punch Skater™.
 
 **Recommended model:** Opus 4.7
 
@@ -121,8 +121,8 @@ Responsibilities:
 
 **Tasks:**
 
-1. Establish Sk8r Punk as the umbrella IP.
-2. Establish Punch Skater as the first game under the umbrella.
+1. Establish Sk8r Punk™ as the umbrella IP.
+2. Establish Punch Skater™ as the first game under the umbrella.
 3. Create or update a world bible section for:
    - factions
    - districts
@@ -131,7 +131,7 @@ Responsibilities:
    - terminology
    - technology rules
    - corporations and underground crews
-4. Decide which mechanics are universal canon versus Punch Skater-specific mechanics.
+4. Decide which mechanics are universal canon versus Punch Skater™-specific mechanics.
 5. Add links from sk8rpunk.com to punchskater.com.
 
 **Deliverables:**
@@ -140,7 +140,7 @@ Responsibilities:
 - Canon glossary
 - Faction index
 - Jousting lore page
-- Punch Skater product page
+- Punch Skater™ product page
 
 ---
 
@@ -156,21 +156,21 @@ Responsibilities:
 
 1. Create a strong landing page with the North Star fantasy.
 2. Add visual navigation cards for:
-   - Punch Skater
+   - Punch Skater™
    - Courier Dispatch
    - Future Jousting Game
    - Future Dice/Casino Game
    - Fiction / Novels
    - Codex / World Bible
 3. Add a simple timeline or roadmap section.
-4. Add a clear call to action: "Play Punch Skater".
+4. Add a clear call to action: "Play Punch Skater™".
 5. Add an IP positioning section: "Electric skateboard cyberpunk."
 
 **Deliverables:**
 
 - Homepage refresh
 - Game hub cards
-- Punch Skater CTA
+- Punch Skater™ CTA
 - Future projects teaser section
 
 ---
@@ -213,7 +213,7 @@ Responsibilities:
 
 ### Phase 3 — Shared Data Contracts
 
-**Goal:** Prepare Sk8r Punk to support multiple games without breaking data compatibility.
+**Goal:** Prepare Sk8r Punk™ to support multiple games without breaking data compatibility.
 
 **Recommended model:** GPT-5.4
 
@@ -231,10 +231,10 @@ Responsibilities:
    - shield
    - rarity
    - progression metadata
-2. Decide which data belongs to Punch Skater and which data belongs to the Sk8r Punk universe.
+2. Decide which data belongs to Punch Skater™ and which data belongs to the Sk8r Punk™ universe.
 3. Create schema versioning rules.
 4. Document import/export payloads.
-5. Keep existing Punch Skater deck exports compatible.
+5. Keep existing Punch Skater™ deck exports compatible.
 
 **Deliverables:**
 
@@ -255,7 +255,7 @@ Responsibilities:
 
 **Tasks:**
 
-1. Decide whether Sk8r Punk eventually needs a global player profile.
+1. Decide whether Sk8r Punk™ eventually needs a global player profile.
 2. Define profile concepts:
    - display name
    - home faction
@@ -264,7 +264,7 @@ Responsibilities:
    - titles
    - collection showcase
    - cross-game achievements
-3. Define what Punch Skater can expose to the hub.
+3. Define what Punch Skater™ can expose to the hub.
 4. Plan privacy and security boundaries.
 5. Avoid building blockchain or complicated ownership systems unless there is a clear reason.
 
@@ -278,22 +278,22 @@ Responsibilities:
 
 ### Phase 5 — Future Game Incubation
 
-**Goal:** Keep expansion ideas organized without distracting from Punch Skater.
+**Goal:** Keep expansion ideas organized without distracting from Punch Skater™.
 
 **Recommended model:** Opus 4.7 for concept docs, GPT-5.4 for prototypes
 
 **Tasks:**
 
 1. Create one-page concept docs for:
-   - Sk8r Punk: Joustline / Street Joust
-   - Sk8r Punk: Neon Dice / Roll Pit
-   - Sk8r Punk: Courier Dispatch
-   - Sk8r Punk: District War
+   - Sk8r Punk™: Joustline / Street Joust
+   - Sk8r Punk™: Neon Dice / Roll Pit
+   - Sk8r Punk™: Courier Dispatch
+   - Sk8r Punk™: District War
 2. Define each concept by:
    - core fantasy
    - core loop
    - player progression
-   - relationship to Punch Skater cards
+   - relationship to Punch Skater™ cards
    - scope risks
 3. Do not implement all of them yet.
 4. Use these docs as a creative vault.
@@ -317,15 +317,15 @@ Use the models like this:
 
 ## Immediate Next Steps
 
-1. Treat this file as the high-level Sk8r Punk universe roadmap.
-2. Keep Punch Skater focused as the first playable product.
+1. Treat this file as the high-level Sk8r Punk™ universe roadmap.
+2. Keep Punch Skater™ focused as the first playable product.
 3. Add jousting to the canon immediately.
 4. Save full jousting combat and casino dice systems for future games.
 5. Refresh sk8rpunk.com as the universe hub.
-6. Make Punch Skater the clearest call to action from the hub.
+6. Make Punch Skater™ the clearest call to action from the hub.
 
 ## Guiding Principle
 
 Do not cram the whole universe into one game.
 
-Build Sk8r Punk as the world. Let Punch Skater be the first strong doorway into it.
+Build Sk8r Punk™ as the world. Let Punch Skater™ be the first strong doorway into it.

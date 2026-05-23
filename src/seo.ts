@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
-const SITE_NAME = "Sk8r Punk";
+const SITE_NAME = "Sk8r Punk™";
 const SITE_URL = "https://sk8rpunk.com";
 const DEFAULT_IMAGE_PATH = "/Skateboards%20in%20space.png";
 const DEFAULT_IMAGE_URL = `${SITE_URL}${DEFAULT_IMAGE_PATH}`;
-const HOME_TITLE = "Sk8r Punk — Electric Skateboard Cyberpunk Universe | Play Punch Skater";
+const HOME_TITLE = "Sk8r Punk™ — Electric Skateboard Cyberpunk Universe | Play Punch Skater™";
 const HOME_DESCRIPTION =
-  "Sk8r Punk is an electric skateboard cyberpunk universe. Explore the lore, factions, riders, and projects, then play Punch Skater — the first live game.";
+  "Sk8r Punk™ is an electric skateboard cyberpunk universe. Explore the lore, factions, riders, and projects, then play Punch Skater™ — the first live game.";
 
 type SeoDefinition = {
   title: string;
@@ -21,9 +21,9 @@ type SeoDefinition = {
 function getHomeStructuredData(punchskaterUrl: string): Record<string, unknown> {
   const projects = [
     {
-      name: "Punch Skater",
+      name: "Punch Skater™",
       description:
-        "The first live game in the Sk8r Punk universe. Build an electric-skateboard crew, forge cards, run missions, and compete.",
+        "The first live game in the Sk8r Punk™ universe. Build an electric-skateboard crew, forge cards, run missions, and compete.",
       type: "VideoGame",
       url: punchskaterUrl,
     },
@@ -42,7 +42,7 @@ function getHomeStructuredData(punchskaterUrl: string): Record<string, unknown> 
     {
       name: "Neon Dice",
       description:
-        "A faction-driven dice and wagering game set inside the Sk8r Punk universe.",
+        "A faction-driven dice and wagering game set inside the Sk8r Punk™ universe.",
       type: "Game",
     },
     {
@@ -92,12 +92,12 @@ function getHomeStructuredData(punchskaterUrl: string): Record<string, unknown> 
         },
         about: [
           { "@type": "Thing", name: "electric skateboard cyberpunk" },
-          { "@type": "Thing", name: "Punch Skater" },
+          { "@type": "Thing", name: "Punch Skater™" },
           { "@type": "Thing", name: "cyberpunk Australia" },
         ],
         mainEntity: {
           "@type": "ItemList",
-          name: "Sk8r Punk universe projects",
+          name: "Sk8r Punk™ universe projects",
           itemListElement: projects.map((project, index) => ({
             "@type": "ListItem",
             position: index + 1,
@@ -117,9 +117,9 @@ function getHomeStructuredData(punchskaterUrl: string): Record<string, unknown> 
 export function getSeoDefinition(page: string | null, punchskaterUrl: string): SeoDefinition {
   if (page === "bios") {
     return {
-      title: "Character Bios | Sk8r Punk",
+      title: "Character Bios | Sk8r Punk™",
       description:
-        "Character bios for the riders and operatives of the Sk8r Punk universe. This section is access-restricted and not intended for search indexing.",
+        "Character bios for the riders and operatives of the Sk8r Punk™ universe. This section is access-restricted and not intended for search indexing.",
       canonical: `${SITE_URL}/?page=bios`,
       robots: "noindex, nofollow, noarchive",
       ogType: "article",
@@ -129,9 +129,9 @@ export function getSeoDefinition(page: string | null, punchskaterUrl: string): S
 
   if (page === "joustur-skatur") {
     return {
-      title: "Joustur Skatur | Sk8r Punk",
+      title: "Joustur Skatur™ | Sk8r Punk™",
       description:
-        "Joustur Skatur is an upcoming Punch Skater mode inside the Sk8r Punk universe.",
+        "Joustur Skatur™ is an upcoming Punch Skater™ mode inside the Sk8r Punk™ universe.",
       canonical: `${SITE_URL}/?page=joustur-skatur`,
       robots: "noindex, nofollow, noarchive",
       ogType: "website",
