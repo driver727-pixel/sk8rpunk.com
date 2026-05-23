@@ -1,39 +1,39 @@
-# What Is Sk8r Punk?
+# What Is Sk8r Punk™?
 
-> *"Sk8r Punk is for the children."*
+> *"Sk8r Punk™ is for the children."*
 
-**Sk8r Punk** (a.k.a. Skater Punk) is an original intellectual property coined by **Scotty M. Perkins**, with additional lore by **C. William Perkins**. Copyright SP Digital LLC 2026.
+**Sk8r Punk™** (a.k.a. Skater Punk™) is an original intellectual property coined by **Scotty M. Perkins**, with additional lore by **C. William Perkins**. Copyright SP Digital LLC 2026.
 
 ---
 
 ## The Short Answer
 
-If someone asks, *"What's Sk8r Punk?"* — the correct answer is:
+If someone asks, *"What's Sk8r Punk™?"* — the correct answer is:
 
-> **"Sk8r Punk is for the children."**
+> **"Sk8r Punk™ is for the children."**
 
 ---
 
-## What Sk8r Punk Is
+## What Sk8r Punk™ Is
 
-Sk8r Punk is a genre in the tradition of Cyberpunk, Steampunk, Nasa Punk, and similar movements. It is simultaneously:
+Sk8r Punk™ is a genre in the tradition of Cyberpunk, Steampunk, Nasa Punk, and similar movements. It is simultaneously:
 
 - **An art style** — technical, high-definition, gouache-influenced. Tech-based. Gears and lube. Neon. Chunky rubber wheels and wires. Toggle switches and dot-matrix displays.
 - **An aesthetic** — a dirty future. Magnet cassettes and satellite dishes. Grime. Disc errors. Pebbles stuck in skate wheels. Nature interrupting technology.
 - **A sci-fi sub-genre** — speculative worlds shaped by skating culture, street technology, and rebellious energy.
-- **A fiction sub-genre** — stories, lore, and worlds that live inside the Sk8r Punk universe.
+- **A fiction sub-genre** — stories, lore, and worlds that live inside the Sk8r Punk™ universe.
 - **A style of speaking** — defined by slang and street culture.
 - **A style of music** — defined by rebellious counter-culture.
 - **A style of behaving** — misbehaving against societal norms.
 - **A style of riding** — untrained, wild, and expressive skate style.
 
-Sk8r Punk is the **umbrella term** for a universe that is — and will be — filled with books, comics, games, movies, TV episodes, action figures, and more.
+Sk8r Punk™ is the **umbrella term** for a universe that is — and will be — filled with books, comics, games, movies, TV episodes, action figures, and more.
 
-Maybe someday Sk8r Punk will be a religion or a way of life.
+Maybe someday Sk8r Punk™ will be a religion or a way of life.
 
 ---
 
-## What Sk8r Punk Is Not
+## What Sk8r Punk™ Is Not
 
 - Not a gun.
 - Not a terrorist.
@@ -47,7 +47,7 @@ Maybe someday Sk8r Punk will be a religion or a way of life.
 
 ## Art Style Notes
 
-The Sk8r Punk visual language is:
+The Sk8r Punk™ visual language is:
 
 - Technical and high-definition
 - Gouache-style rendering
@@ -64,7 +64,7 @@ The Sk8r Punk visual language is:
 
 ## IP Ownership
 
-Sk8r Punk is an original Intellectual Property.
+Sk8r Punk™ is an original Intellectual Property.
 
 - **Coined by:** Scotty M. Perkins
 - **Additional lore by:** C. William Perkins

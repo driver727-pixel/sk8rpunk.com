@@ -43,7 +43,7 @@ function BioCard({
         <div>
           <p className="eyebrow" style={{ color: char.accentColor }}>
             {char.source === "punch-skater"
-              ? "Punch Skater"
+              ? "Punch Skater™"
               : "Operation Nightshade"}
           </p>
           <h3 className="bio-card-name">{char.name}</h3>
@@ -237,15 +237,15 @@ export default function CharacterBios() {
           <a href="/" className="bios-back-link">
             ← Back to sk8rpunk.com
           </a>
-          <p className="eyebrow">SK8R PUNK UNIVERSE</p>
+          <p className="eyebrow">SK8R PUNK™ UNIVERSE</p>
           <h1 className="bios-title">Character Bios</h1>
           <p className="bios-subtitle muted">
-            The riders and operatives of the Sk8r Punk universe.
+            The riders and operatives of the Sk8r Punk™ universe.
           </p>
         </header>
 
         <CharacterSection
-          title="Punch Skater"
+          title="Punch Skater™"
           source="punch-skater"
           revealedImages={revealedImages}
           onToggleImage={toggleImage}
@@ -259,7 +259,7 @@ export default function CharacterBios() {
         />
 
         <footer className="bios-page-footer">
-          <p>SK8R PUNK and Punch Skater are an original IP created by Scotty M. Perkins with lore by C. William Perkins. Copyright © SP Digital LLC 2026</p>
+          <p>SK8R PUNK™ and Punch Skater™ are an original IP created by Scotty M. Perkins with lore by C. William Perkins. Copyright © SP Digital LLC 2026</p>
         </footer>
       </div>
     </div>
