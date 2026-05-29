@@ -34,7 +34,8 @@ export function CharacterManager({ characters, onAdd, onRemove, onUpdate }: Prop
       <h3>Characters (Reference Material)</h3>
       <p className="muted">
         Add characters with visual descriptions and reference image URLs.
-        Upload images to <code>/comic-references/</code> and use the path here.
+        Upload images to <code>public/comic-references/</code> in the repo, then reference
+        them here as <code>/comic-references/filename.png</code>.
       </p>
 
       <div className="comic-char-form">
