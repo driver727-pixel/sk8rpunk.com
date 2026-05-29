@@ -20,6 +20,7 @@
   },
   "homepage": "https://sk8rpunk.com",
   "dependencies": {
+    "@fal-ai/client": "^1.10.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
