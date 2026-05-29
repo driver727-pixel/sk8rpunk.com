@@ -1,0 +1,275 @@
+/* ── Comic Book Builder styles ───────────────────────────────────────────── */
+
+.comic-builder-shell {
+  min-height: 100vh;
+  background: #0a0e17;
+  color: #e4e4e7;
+  font-family: "Inter", system-ui, sans-serif;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.comic-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.comic-header h1 {
+  font-size: 1.5rem;
+  color: #19f2ff;
+  margin: 0;
+}
+.comic-back {
+  color: #a63cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.comic-back:hover { text-decoration: underline; }
+
+/* ── Key gate ─────────────────────────────────────────────────────────────── */
+.comic-key-gate {
+  max-width: 480px;
+  margin: 3rem auto;
+  text-align: center;
+}
+.comic-key-gate h3 { color: #19f2ff; }
+.comic-key-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.comic-fal-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(25,242,255,0.05);
+  border: 1px solid rgba(25,242,255,0.2);
+  border-radius: 6px;
+}
+.comic-fal-badge { color: #19f2ff; font-size: 0.85rem; }
+
+/* ── Shared form elements ─────────────────────────────────────────────────── */
+.comic-input, .comic-textarea, .comic-select {
+  background: #181c28;
+  border: 1px solid #2a2f3d;
+  color: #e4e4e7;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
+.comic-input:focus, .comic-textarea:focus, .comic-select:focus {
+  outline: none;
+  border-color: #19f2ff;
+}
+.comic-input-sm { width: auto; font-size: 0.8rem; padding: 0.3rem 0.5rem; }
+.comic-select-sm { width: auto; font-size: 0.8rem; }
+.comic-textarea { resize: vertical; }
+
+.comic-btn {
+  background: #19f2ff;
+  color: #0a0e17;
+  border: none;
+  border-radius: 6px;
+  padding: 0.55rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.comic-btn:hover { background: #5ff7ff; }
+.comic-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.comic-btn-generate { background: #a63cff; color: #fff; }
+.comic-btn-generate:hover { background: #c06aff; }
+
+.comic-btn-sm {
+  background: #2a2f3d;
+  color: #e4e4e7;
+  border: none;
+  border-radius: 4px;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.comic-btn-sm:hover { background: #3a3f4d; }
+.comic-btn-danger { background: #5a1a2a; color: #ff6a9a; }
+.comic-btn-danger:hover { background: #7a2a3a; }
+
+/* ── Project selector ─────────────────────────────────────────────────────── */
+.comic-project-select { max-width: 600px; margin: 0 auto; }
+.comic-project-create { display: flex; gap: 0.5rem; margin: 1rem 0; }
+.comic-project-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.comic-project-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #181c28;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.comic-project-item-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: #e4e4e7;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.comic-project-item-btn:hover { background: rgba(25,242,255,0.05); }
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────── */
+.comic-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #2a2f3d;
+  padding-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+.comic-tab {
+  background: none;
+  border: none;
+  color: #a0a0b0;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 4px 4px 0 0;
+  font-weight: 500;
+}
+.comic-tab:hover { color: #e4e4e7; }
+.comic-tab-active { color: #19f2ff; border-bottom: 2px solid #19f2ff; }
+
+/* ── Pages ────────────────────────────────────────────────────────────────── */
+.comic-pages { display: flex; flex-direction: column; gap: 2rem; }
+.comic-page-section {
+  background: #12161f;
+  border: 1px solid #2a2f3d;
+  border-radius: 8px;
+  padding: 1rem;
+}
+.comic-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+.comic-page-header h3 { margin: 0; color: #a63cff; }
+.comic-page-header div { display: flex; gap: 0.5rem; }
+
+.comic-panels-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.comic-panel-wrap {
+  border: 1px solid #2a2f3d;
+  border-radius: 6px;
+  padding: 1rem;
+  background: #0e1219;
+}
+.comic-panel-badge {
+  font-size: 0.75rem;
+  color: #a63cff;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Panel editor ─────────────────────────────────────────────────────────── */
+.comic-panel-editor { display: flex; flex-direction: column; gap: 0.75rem; }
+.comic-panel-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: flex-start; }
+.comic-char-select { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.comic-char-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.8rem;
+  background: #181c28;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  border-left: 3px solid;
+}
+
+.comic-prompt-preview { margin-top: 0.25rem; }
+.comic-prompt-preview summary { cursor: pointer; color: #a0a0b0; font-size: 0.8rem; }
+.comic-prompt-text {
+  font-size: 0.75rem;
+  background: #181c28;
+  padding: 0.5rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.comic-seed-lock { font-size: 0.8rem; display: flex; align-items: center; gap: 0.3rem; }
+
+.comic-error { color: #ff6a9a; font-size: 0.85rem; }
+
+.comic-panel-image-wrap {
+  position: relative;
+  margin-top: 0.5rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.comic-panel-image { width: 100%; display: block; border-radius: 6px; }
+
+/* ── Dialogue overlays ────────────────────────────────────────────────────── */
+.comic-dialogue-overlay {
+  position: absolute;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  max-width: 45%;
+  pointer-events: none;
+}
+.comic-dialogue-speech { background: #fff; color: #111; border: 2px solid #111; }
+.comic-dialogue-thought { background: rgba(255,255,255,0.85); color: #111; border: 2px dashed #888; border-radius: 50%; }
+.comic-dialogue-narration { background: rgba(255,214,0,0.9); color: #111; }
+.comic-dialogue-caption { background: rgba(0,0,0,0.8); color: #fff; border-radius: 4px; }
+.comic-dialogue-sfx { color: #ff6a9a; font-size: 1.2rem; font-style: italic; background: none; }
+
+.comic-dialogue-section { margin-top: 0.75rem; }
+.comic-dialogue-add-row { display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.5rem; }
+.comic-dialogue-item { display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.4rem; }
+
+/* ── Characters ───────────────────────────────────────────────────────────── */
+.comic-characters { max-width: 700px; }
+.comic-char-form { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; }
+.comic-char-form-row { display: flex; gap: 1rem; align-items: center; }
+.comic-char-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+.comic-char-card {
+  background: #181c28;
+  border: 1px solid;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.comic-char-card-header { display: flex; justify-content: space-between; align-items: center; }
+.comic-char-thumbs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.comic-char-thumb { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+.comic-char-add-img { margin-top: 0.5rem; }
+
+/* ── Style controls ───────────────────────────────────────────────────────── */
+.comic-style-controls { max-width: 700px; }
+.comic-style-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.comic-style-grid label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: #a0a0b0; }
+.comic-keywords-label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: #a0a0b0; margin-top: 1rem; }
+
+/* ── Export ────────────────────────────────────────────────────────────────── */
+.comic-export { max-width: 500px; }
+.comic-export h3 { color: #19f2ff; }

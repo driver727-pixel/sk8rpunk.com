@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import operationNightshadeCover from "../SMPDIGI.jpg";
 import CharacterBios from "./CharacterBios";
+import { ComicBuilderStudio } from "./features/comic-builder/ComicBuilderStudio";
+import "./features/comic-builder/comic-builder.css";
 import { characters } from "./data/characters";
 import { useSeo } from "./seo";
 
@@ -115,6 +117,19 @@ const games: GameTile[] = [
     href: null,
     accent: "#19f2ff",
   },
+  {
+    id: "comic-builder",
+    name: "Comic Book Builder",
+    domain: null,
+    tagline: "Turn story pages into comic panels with AI.",
+    description:
+      "Admin tool powered exclusively by Nano Banana 2 on fal.ai. Feed in your story, attach character references, and generate consistent comic book panels with editable dialogue layers.",
+    features: ["Nano Banana 2", "Character refs", "Panel generation", "Dialogue layers", "JSON export"],
+    status: "live",
+    href: "/?page=comic-builder",
+    accent: "#ff6a9a",
+    cta: "Open Comic Builder →",
+  },
 ];
 
 function App() {
@@ -201,6 +216,9 @@ function App() {
   // ── Conditional page renders (must come after all hooks) ───────────────────
   if (page === "bios") {
     return <CharacterBios />;
+  }
+  if (page === "comic-builder") {
+    return <ComicBuilderStudio />;
   }
   if (page === "joustur-skatur") {
     return null;
