@@ -16,6 +16,7 @@ const HERO_ORBS = [
 ] as const;
 
 const punchskaterUrl = import.meta.env.VITE_PUNCHSKATER_URL || "https://punchskater.com";
+const CHARACTER_CARD_BORDER_ALPHA = "33";
 
 const slideshowImages = [
   "https://github.com/user-attachments/assets/8210c5b0-3690-48de-9e43-59e879d7a5df",
@@ -487,7 +488,7 @@ function App() {
               <article
                 key={character.id}
                 className="char-teaser-card"
-                style={{ borderColor: `${character.accentColor}33` }}
+                style={{ borderColor: `${character.accentColor}${CHARACTER_CARD_BORDER_ALPHA}` }}
               >
                 <img
                   className="char-teaser-portrait"
