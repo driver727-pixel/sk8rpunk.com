@@ -16,6 +16,7 @@ const HERO_ORBS = [
 ] as const;
 
 const punchskaterUrl = import.meta.env.VITE_PUNCHSKATER_URL || "https://punchskater.com";
+const CARD_BORDER_OPACITY_HEX = "33";
 
 const slideshowImages = [
   "https://github.com/user-attachments/assets/8210c5b0-3690-48de-9e43-59e879d7a5df",
@@ -480,19 +481,28 @@ function App() {
           <p className="hub-section-copy">
             Meet Cassidy Cloud, Bloodside, Guy Kaleb, Seby Baltisar, EMJAY, Ben
             Shushka, and Captain Garibaldi — the riders and operatives of the
-            Sk8r Punk™ universe. Full visual reveal coming soon.
+            Sk8r Punk™ universe.
           </p>
-          <div className="char-teaser-grid" aria-hidden="true">
-            {Array.from({ length: characters.length }, (_, i) => (
-              <div key={i} className="char-teaser-card">
-                <div className="char-teaser-portrait" />
-                <div className="char-teaser-name-bar" />
-                <div className="char-teaser-bio-lines">
-                  <div className="char-teaser-bio-line" />
-                  <div className="char-teaser-bio-line" />
-                  <div className="char-teaser-bio-line" />
+          <div className="char-teaser-grid">
+            {characters.map((character) => (
+              <article
+                key={character.id}
+                className="char-teaser-card"
+                style={{ borderColor: `${character.accentColor}${CARD_BORDER_OPACITY_HEX}` }}
+              >
+                <img
+                  className="char-teaser-portrait"
+                  src={character.imagePath}
+                  alt={character.imageAlt}
+                  width={character.imageWidth}
+                  height={character.imageHeight}
+                  loading="lazy"
+                />
+                <div className="char-teaser-copy">
+                  <h3 className="char-teaser-name">{character.name}</h3>
+                  <p className="char-teaser-role">{character.role}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
           <div className="route-actions">

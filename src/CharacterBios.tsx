@@ -76,6 +76,8 @@ function BioCard({
             <img
               src={char.imagePath}
               alt={char.imageAlt}
+              width={char.imageWidth}
+              height={char.imageHeight}
               loading="lazy"
               className="bio-image"
             />
