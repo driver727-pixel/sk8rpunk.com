@@ -478,8 +478,9 @@ function App() {
           <p className="eyebrow">Character Bios</p>
           <h2 className="hub-section-h2">Meet the riders.</h2>
           <p className="hub-section-copy">
-            Character bios for the Punch Skater™ crew and the operatives of
-            Operation Nightshade are live. Full visual reveal coming soon.
+            Meet Cassidy Cloud, Bloodside, Guy Kaleb, Seby Baltisar, EMJAY, Ben
+            Shushka, and Captain Garibaldi — the riders and operatives of the
+            Sk8r Punk™ universe. Full visual reveal coming soon.
           </p>
           <div className="char-teaser-grid" aria-hidden="true">
             {Array.from({ length: characters.length }, (_, i) => (
