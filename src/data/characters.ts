@@ -21,7 +21,7 @@ export type Character = {
   role: string;
   bio: string;
   traits: string[];
-  /** Path served from /public/characters/, e.g. "/characters/cassidy.jpg" */
+  /** Imported portrait asset URL. */
   imagePath: string;
   imageAlt: string;
   /** Intrinsic portrait width in pixels. */
