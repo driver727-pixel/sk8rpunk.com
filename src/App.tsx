@@ -493,6 +493,8 @@ function App() {
                   className="char-teaser-portrait"
                   src={character.imagePath}
                   alt={character.imageAlt}
+                  width={character.imageWidth}
+                  height={character.imageHeight}
                   loading="lazy"
                 />
                 <div className="char-teaser-copy">

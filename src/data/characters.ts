@@ -24,6 +24,8 @@ export type Character = {
   /** Path served from /public/characters/, e.g. "/characters/cassidy.jpg" */
   imagePath: string;
   imageAlt: string;
+  imageWidth: number;
+  imageHeight: number;
   accentColor: string;
 };
 
@@ -39,6 +41,8 @@ export const characters: Character[] = [
     traits: ["Experience", "Athleticism", "Leadership"],
     imagePath: cassidyCloudImage,
     imageAlt: "Cassidy Cloud — veteran rider",
+    imageWidth: 322,
+    imageHeight: 575,
     accentColor: "#19f2ff",
   },
   {
@@ -51,6 +55,8 @@ export const characters: Character[] = [
     traits: ["Agility", "Street Fighting", "Grit"],
     imagePath: rosaBluntsideImage,
     imageAlt: "Rosa Bluntside aka Bloodside — street rider",
+    imageWidth: 462,
+    imageHeight: 517,
     accentColor: "#ff3d3d",
   },
   {
@@ -63,6 +69,8 @@ export const characters: Character[] = [
     traits: ["Power", "Intimidation", "Resilience"],
     imagePath: guyKalebImage,
     imageAlt: "Guy Kaleb — heavy hitter",
+    imageWidth: 464,
+    imageHeight: 562,
     accentColor: "#a63cff",
   },
   {
@@ -75,6 +83,8 @@ export const characters: Character[] = [
     traits: ["Athleticism", "Technique", "Precision"],
     imagePath: sebyBaltisarImage,
     imageAlt: "Sebastian \"Seby\" Baltisar — skilled rider",
+    imageWidth: 361,
+    imageHeight: 538,
     accentColor: "#ffd36a",
   },
 
@@ -89,6 +99,8 @@ export const characters: Character[] = [
     traits: ["Veteran Instincts", "Endurance", "Field Experience"],
     imagePath: maryJaneImage,
     imageAlt: "Mary Jane aka EMJAY — field operative",
+    imageWidth: 505,
+    imageHeight: 698,
     accentColor: "#ff6a9a",
   },
   {
@@ -101,6 +113,8 @@ export const characters: Character[] = [
     traits: ["Street Smarts", "Tenacity", "Resourcefulness"],
     imagePath: benShushkaImage,
     imageAlt: "Ben Shushka — operative",
+    imageWidth: 433,
+    imageHeight: 514,
     accentColor: "#ff6a3d",
   },
   {
@@ -113,6 +127,8 @@ export const characters: Character[] = [
     traits: ["Command Authority", "Tactical Planning", "Experience"],
     imagePath: captainGaribaldiImage,
     imageAlt: "Captain Garibaldi — commanding officer",
+    imageWidth: 507,
+    imageHeight: 718,
     accentColor: "#6aff99",
   },
 ];
