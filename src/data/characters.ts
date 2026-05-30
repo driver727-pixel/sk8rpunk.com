@@ -24,7 +24,9 @@ export type Character = {
   /** Path served from /public/characters/, e.g. "/characters/cassidy.jpg" */
   imagePath: string;
   imageAlt: string;
+  /** Intrinsic portrait width in pixels. */
   imageWidth: number;
+  /** Intrinsic portrait height in pixels. */
   imageHeight: number;
   accentColor: string;
 };
