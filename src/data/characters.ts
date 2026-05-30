@@ -1,7 +1,14 @@
+import benShushkaImage from "../../ben-shushka.png";
+import captainGaribaldiImage from "../../captain-garibaldi.png";
+import cassidyCloudImage from "../../cassidy-cloud.png";
+import guyKalebImage from "../../guy-kaleb.png";
+import maryJaneImage from "../../mary-jane.png";
+import rosaBluntsideImage from "../../rosa-bluntside.png";
+import sebyBaltisarImage from "../../seby-baltisar.png";
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Character Bio data — Sk8r Punk™ Universe
 // Source: Main Characters with Photos (official character doc)
-// Images go in /public/characters/ when available.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type CharacterSource = "punch-skater" | "operation-nightshade";
@@ -30,7 +37,7 @@ export const characters: Character[] = [
     role: "Veteran Rider",
     bio: "49 years old. 5'8\", slender athletic build, blue straight hair down to her neck, and an attractive but aging face.",
     traits: ["Experience", "Athleticism", "Leadership"],
-    imagePath: "/characters/cassidy.jpg",
+    imagePath: cassidyCloudImage,
     imageAlt: "Cassidy Cloud — veteran rider",
     accentColor: "#19f2ff",
   },
@@ -42,7 +49,7 @@ export const characters: Character[] = [
     role: "Street Rider",
     bio: "29 years old. 5'4\", petite athletic build, Latina descent with tan skin. Typically keeps her curly hair shaved or bald.",
     traits: ["Agility", "Street Fighting", "Grit"],
-    imagePath: "/characters/bloodside.jpg",
+    imagePath: rosaBluntsideImage,
     imageAlt: "Rosa Bluntside aka Bloodside — street rider",
     accentColor: "#ff3d3d",
   },
@@ -54,7 +61,7 @@ export const characters: Character[] = [
     role: "Heavy Hitter",
     bio: "39 years old. 6'6\", large but out of shape, with curly short black hair colored neon purple.",
     traits: ["Power", "Intimidation", "Resilience"],
-    imagePath: "/characters/guy-kaleb.jpg",
+    imagePath: guyKalebImage,
     imageAlt: "Guy Kaleb — heavy hitter",
     accentColor: "#a63cff",
   },
@@ -66,7 +73,7 @@ export const characters: Character[] = [
     role: "Skilled Rider",
     bio: "40 years old. 5'11\", athletic build, and long straight blonde hair.",
     traits: ["Athleticism", "Technique", "Precision"],
-    imagePath: "/characters/seby.jpg",
+    imagePath: sebyBaltisarImage,
     imageAlt: "Sebastian \"Seby\" Baltisar — skilled rider",
     accentColor: "#ffd36a",
   },
@@ -80,7 +87,7 @@ export const characters: Character[] = [
     role: "Field Operative",
     bio: "45 years old. 5'10\", weathered, and formerly athletic but quickly growing out of shape.",
     traits: ["Veteran Instincts", "Endurance", "Field Experience"],
-    imagePath: "/characters/emjay.jpg",
+    imagePath: maryJaneImage,
     imageAlt: "Mary Jane aka EMJAY — field operative",
     accentColor: "#ff6a9a",
   },
@@ -92,7 +99,7 @@ export const characters: Character[] = [
     role: "Operative",
     bio: "37 years old. 5'6\", overweight and out of shape, Lebanese descent with tan skin and dark complexion. Mostly bald, and often sporting a mustache.",
     traits: ["Street Smarts", "Tenacity", "Resourcefulness"],
-    imagePath: "/characters/ben-shushka.jpg",
+    imagePath: benShushkaImage,
     imageAlt: "Ben Shushka — operative",
     accentColor: "#ff6a3d",
   },
@@ -104,7 +111,7 @@ export const characters: Character[] = [
     role: "Commanding Officer",
     bio: "60 years old. Out of shape, dark skin, and balding.",
     traits: ["Command Authority", "Tactical Planning", "Experience"],
-    imagePath: "/characters/garibaldi.jpg",
+    imagePath: captainGaribaldiImage,
     imageAlt: "Captain Garibaldi — commanding officer",
     accentColor: "#6aff99",
   },

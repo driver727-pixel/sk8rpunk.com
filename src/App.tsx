@@ -480,19 +480,26 @@ function App() {
           <p className="hub-section-copy">
             Meet Cassidy Cloud, Bloodside, Guy Kaleb, Seby Baltisar, EMJAY, Ben
             Shushka, and Captain Garibaldi — the riders and operatives of the
-            Sk8r Punk™ universe. Full visual reveal coming soon.
+            Sk8r Punk™ universe.
           </p>
-          <div className="char-teaser-grid" aria-hidden="true">
-            {Array.from({ length: characters.length }, (_, i) => (
-              <div key={i} className="char-teaser-card">
-                <div className="char-teaser-portrait" />
-                <div className="char-teaser-name-bar" />
-                <div className="char-teaser-bio-lines">
-                  <div className="char-teaser-bio-line" />
-                  <div className="char-teaser-bio-line" />
-                  <div className="char-teaser-bio-line" />
+          <div className="char-teaser-grid">
+            {characters.map((character) => (
+              <article
+                key={character.id}
+                className="char-teaser-card"
+                style={{ borderColor: `${character.accentColor}33` }}
+              >
+                <img
+                  className="char-teaser-portrait"
+                  src={character.imagePath}
+                  alt={character.imageAlt}
+                  loading="lazy"
+                />
+                <div className="char-teaser-copy">
+                  <h3 className="char-teaser-name">{character.name}</h3>
+                  <p className="char-teaser-role">{character.role}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
           <div className="route-actions">
