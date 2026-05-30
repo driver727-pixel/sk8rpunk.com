@@ -67,7 +67,7 @@ export const characters: Character[] = [
     bio: "40 years old. 5'11\", athletic build, and long straight blonde hair.",
     traits: ["Athleticism", "Technique", "Precision"],
     imagePath: "/characters/seby.jpg",
-    imageAlt: "Sebastian Seby Baltisar — skilled rider",
+    imageAlt: "Sebastian \"Seby\" Baltisar — skilled rider",
     accentColor: "#ffd36a",
   },
 
