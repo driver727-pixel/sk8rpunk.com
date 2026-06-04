@@ -3,10 +3,29 @@ import { FalKeyGate } from "./components/FalKeyGate";
 import { CharacterManager } from "./components/CharacterManager";
 import { StyleControls } from "./components/StyleControls";
 import { PanelEditor } from "./components/PanelEditor";
+import { ComicPreview } from "./components/ComicPreview";
+import { buildComicHtmlDocument } from "./export-html";
 import { createProject, loadBuilderState, saveBuilderState } from "./storage";
 import type { CharacterReference, ComicPage, ComicProject, Panel } from "./types";
 
-type Tab = "pages" | "characters" | "style" | "export";
+type Tab = "pages" | "preview" | "characters" | "style" | "export";
+
+function buildProjectSlug(title: string): string {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "comic";
+}
+
+function downloadBlob(blob: Blob, filename: string) {
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  URL.revokeObjectURL(url);
+}
 
 function createPanel(): Panel {
   return {
@@ -30,6 +49,7 @@ export function ComicBuilderStudio() {
   const [state, setState] = useState(() => loadBuilderState());
   const [tab, setTab] = useState<Tab>("pages");
   const [newTitle, setNewTitle] = useState("");
+  const [exportMessage, setExportMessage] = useState<string | null>(null);
 
   // Active project
   const project = state.projects.find((p) => p.id === state.activeProjectId) ?? null;
@@ -141,13 +161,49 @@ export function ComicBuilderStudio() {
 
   const handleExportJSON = () => {
     if (!project) return;
+    setExportMessage(null);
+    const slug = buildProjectSlug(project.title);
     const blob = new Blob([JSON.stringify(project, null, 2)], { type: "application/json" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${project.title.replace(/\s+/g, "-").toLowerCase()}-comic.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+    downloadBlob(blob, `${slug}-comic.json`);
+  };
+
+  const handleExportPreviewHTML = () => {
+    if (!project) return;
+    setExportMessage(null);
+    const slug = buildProjectSlug(project.title);
+    const blob = new Blob([buildComicHtmlDocument(project)], { type: "text/html" });
+    downloadBlob(blob, `${slug}-comic-preview.html`);
+  };
+
+  const handleShareComic = async () => {
+    if (!project) return;
+
+    const slug = buildProjectSlug(project.title);
+    const file = new File([buildComicHtmlDocument(project)], `${slug}-comic-preview.html`, {
+      type: "text/html",
+    });
+
+    if (typeof navigator.share === "function") {
+      try {
+        if (typeof navigator.canShare !== "function" || navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title: `${project.title} comic preview`,
+            text: `Sharing ${project.title} as a standalone comic preview.`,
+            files: [file],
+          });
+          setExportMessage("Comic preview shared.");
+          return;
+        }
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          setExportMessage(null);
+          return;
+        }
+      }
+    }
+
+    downloadBlob(file, file.name);
+    setExportMessage("Native sharing is unavailable here, so the preview HTML was downloaded instead.");
   };
 
   // ── Render ────────────────────────────────────────────────────────────────
@@ -197,7 +253,7 @@ export function ComicBuilderStudio() {
           <>
             {/* Tabs */}
             <nav className="comic-tabs">
-              {(["pages", "characters", "style", "export"] as Tab[]).map((t) => (
+              {(["pages", "preview", "characters", "style", "export"] as Tab[]).map((t) => (
                 <button
                   key={t}
                   className={`comic-tab ${tab === t ? "comic-tab-active" : ""}`}
@@ -250,6 +306,9 @@ export function ComicBuilderStudio() {
               </div>
             )}
 
+            {/* Preview tab */}
+            {tab === "preview" && <ComicPreview project={project} />}
+
             {/* Characters tab */}
             {tab === "characters" && (
               <CharacterManager
@@ -272,10 +331,19 @@ export function ComicBuilderStudio() {
             {tab === "export" && (
               <div className="comic-export">
                 <h3>Export Project</h3>
-                <p className="muted">Download the full project as JSON (story + settings + image URLs + seeds).</p>
-                <button className="comic-btn" onClick={handleExportJSON}>
-                  📦 Download JSON
-                </button>
+                <p className="muted">Download the source JSON, export a standalone preview, or share the finished comic file directly.</p>
+                <div className="comic-export-actions">
+                  <button className="comic-btn" onClick={handleExportJSON}>
+                    📦 Download JSON
+                  </button>
+                  <button className="comic-btn" onClick={handleExportPreviewHTML}>
+                    🖼️ Download Preview HTML
+                  </button>
+                  <button className="comic-btn comic-btn-generate" onClick={() => void handleShareComic()}>
+                    📤 Share Comic
+                  </button>
+                </div>
+                {exportMessage && <p className="muted">{exportMessage}</p>}
               </div>
             )}
           </>
